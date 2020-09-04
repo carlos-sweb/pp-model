@@ -1,0 +1,25 @@
+{
+  "name": "pp-model.js",
+  "version": "1.0.0",
+  "description": "Simple Model Manipulation",
+  "main": "pp-model.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-sweb/pp-model.git"
+  },
+  "keywords": [
+    "model"
+  ],
+  "author": "Carlos Illesca",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlos-sweb/pp-model/issues"
+  },
+  "homepage": "https://github.com/carlos-sweb/pp-model#readme"
+}
