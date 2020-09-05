@@ -93,7 +93,7 @@ var MyData = MyModel.pick(key1,key2,key3);
 >  >  Return data only key not defined
 
 ```javascript
-var MyData = MyModel.set(key1,key2);
+var MyData = MyModel.omit(key1,key2);
 ```
 #### stringify
 >  return string from object data, Use as JSON.stringify 
