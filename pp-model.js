@@ -112,28 +112,53 @@ var ppModel = function(preOptions){
 
 		}
 		// -------------------------------------------------------------------
+		/*
+		*@var has
+		*@type {Function}
+		*@description - funcion que verifica la existencia de una llave en la data
+		*/
 		this.has = function( key ){
 
 			return this.data.hasOwnProperty(key);
 
 		}
 		// -------------------------------------------------------------------
+		/*
+		*@var getAll
+		*@type {Function}
+		*@description - funcion que retorna una copia de la data completa
+		*/
 		this.getAll = function(){
 
 			return Object.assign({...this.data},{});
 
 		}
 		// -------------------------------------------------------------------
+		/*
+		*@var keys
+		*@type {Function}
+		*@description - function que retorna un array con todas las llaves
+		*/
 		this.keys = function(){
 			return Object.keys( this.data );
 		}
 		// -------------------------------------------------------------------
+		/*
+		*@var values
+		*@type {Function}
+		*@description - function que retorna un array con todos los valores
+		*/
 		this.values = function(){
 
 			return Object.values( this.data );
 
 		}
 		// -------------------------------------------------------------------
+		/*
+		*@var
+		*@type {Function}
+		*@description - verifica si es boolean la llave consultada
+		*/
 		this.isBoolean = function( key ){
 			if( this.data.hasOwnProperty(key) ){
 				return typeof this.data[key] == 'boolean';
@@ -142,6 +167,11 @@ var ppModel = function(preOptions){
 			return false;
 		}
 		// -------------------------------------------------------------------
+		/*
+		*@var isString
+		*@type {Function}
+		*@description - funcion que verifica se la llave consultada es una cadena
+		*/
 		this.isString = function( key ){
 
 			if( this.data.hasOwnProperty(key) ){
@@ -154,6 +184,11 @@ var ppModel = function(preOptions){
 
 		}
 		// -------------------------------------------------------------------
+		/*
+		*@var isEmpty
+		*@type {Function}
+		*@description - funcion que verifica si la llave consultada esta vacia
+		*/
 		this.isEmpty = function( key ){
 
 			var value = this.data[key] || "";	
@@ -176,6 +211,11 @@ var ppModel = function(preOptions){
 
 		}
 		// -------------------------------------------------------------------
+		/*
+		*@var pick
+		*@type {Function}
+		*@description - funcion que retorna solmanete las llaves solicitadas
+		*/
 		this.pick = function(){
 	      var args = [].slice.call(arguments);
 	      var result = {};
