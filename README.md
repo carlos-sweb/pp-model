@@ -44,7 +44,7 @@ var keys = MyModel.keys();
 >  Obtains all values from data
 
 ```javascript
-var value = MyModel.values();
+var values = MyModel.values();
 ```
 
 #### has
