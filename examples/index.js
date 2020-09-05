@@ -1,11 +1,28 @@
 var model = new ppModel({
+	
 	defaults:{
-		lab:"Chile",
-		name:"Naproxeno",
-		price:3000,
-		mg:"500mg"
+		
+		salary:50000
+
 	}
 });
-var algo = new model({});
-var a = document.getElementById("showmy");
-a.innerText = algo.stringify(undefined,2);
+
+var myModel = new model({
+	
+	username:"MyUsername",
+	
+	age:33,
+	
+	skill:[
+		"Vue.js",
+		"Backbone.js",
+		"Angular.js"
+	],
+	
+	adress:"Adress, city , contry"
+
+});
+
+var div = document.getElementById("showmy");
+
+div.innerText = myModel.stringify(undefined,3);

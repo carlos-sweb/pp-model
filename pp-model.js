@@ -1,4 +1,30 @@
-var ppModel = function(preOptions){	
+/*!!
+ * Power Panel Model <https://github.com/carlos-sweb/pp-model>
+ * @author Carlos Illesca
+ * @version 1.0.0 (2020/01/01 03:18 PM)
+ * Released under the MIT License
+ */
+ (function(factory){
+  
+  var root = typeof self == 'object' && self.self === self && self ||
+            typeof global == 'object' && global.global === global && global;
+  
+  if (typeof define === 'function' && define.amd) {  	
+    define(['exports'], function(exports) {
+      
+      root.ppModel = factory(root, exports);
+      module.exports = root.ppModel;
+    });
+  
+  } else if (typeof exports !== 'undefined') {  
+    factory(root, exports);
+  // Finally, as a browser global.
+  } else {
+    root.ppModel = factory(root, {});
+  }
+})(function(root, ppModel) {
+
+return function(preOptions){	
 
 	return function( options ){
 		// -------------------------------------------------------------------
@@ -63,9 +89,9 @@ var ppModel = function(preOptions){
 		* se consulta
 		*/
 		this.get = function( key ){
-
+			
 			if( this.data.hasOwnProperty(key) ){
-				return Object.assign({...this.data},{})[key]
+				return Object.assign({...this.data},{})[key];
 			}else{
 				if( typeof key == "undefined" ){
 					return Object.assign({...this.data},{});
@@ -245,7 +271,7 @@ var ppModel = function(preOptions){
 	      var result = {};      
 	      if( args.length > 0 ){      
 	       if( typeof this.data == 'object' ){
-	         result = {...this.data};
+	         //result = {...this.data};
 	         args.forEach(( arg )=>{
 	           if( typeof arg == 'string' ){            	
 	              if( this.data.hasOwnProperty(arg) ){
@@ -273,3 +299,5 @@ var ppModel = function(preOptions){
 	}
 
 }
+//-----------------------------------------------------------------------------
+});

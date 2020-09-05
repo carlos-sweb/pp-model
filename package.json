@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "Simple Model Manipulation",
   "main": "pp-model.js",
-  "directories": {
-    "example": "examples"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx babel pp-model.js --config-file ./babel.config.json  -o pp-model-babeljs.js && uglifyjs pp-model-babeljs.js -m -o pp-model.min.js && terser pp-model-babeljs.js -o pp-model.terser.min.js && cp pp-model.min.js ./examples/pp-model.min.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +18,18 @@
   "bugs": {
     "url": "https://github.com/carlos-sweb/pp-model/issues"
   },
-  "homepage": "https://github.com/carlos-sweb/pp-model#readme"
+  "homepage": "https://github.com/carlos-sweb/pp-model#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "babel-minify": "^0.5.1"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "core-js": "^3.6.5"
+  }
 }
