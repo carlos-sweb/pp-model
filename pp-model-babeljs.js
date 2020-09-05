@@ -135,9 +135,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         } else if (args.length == 2) {
           if (typeof args[0] == "string") {
             if (this.data.hasOwnProperty(args[0])) {
-              this.emit("change:" + args[0], this.data[args[0]], args[1], function () {
-                _this.data[args[0]] = args[1];
-              });
+              if (this.events.hasOwnProperty("change:" + args[0])) {
+                if (this.events["change:" + args[0]].length > 0) {
+                  this.emit("change:" + args[0], this.data[args[0]], args[1], function () {
+                    _this.data[args[0]] = args[1];
+                  });
+                }
+              } else {
+                this.data[args[0]] = args[1];
+              }
             }
           }
         }

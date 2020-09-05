@@ -23,6 +23,8 @@ var myModel = new model({
 
 });
 
+myModel.set("age",55);
+
 var div = document.getElementById("showmy");
 
 div.innerText = myModel.stringify(undefined,3);

@@ -102,3 +102,14 @@ var MyData = MyModel.omit(key1,key2);
 var stringify = MyModel.stringify(undefined,2);
 ```
 
+### Events
+
+#### Lisen
+
+> myModel.on("change:username",function);
+
+```javascript
+var myModel = MyModel.on("change:username",function(newValue,OldValue{
+
+});
+```
