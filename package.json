@@ -1,6 +1,6 @@
 {
   "name": "pp-model.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple Model Manipulation",
   "main": "pp-model.js",
   "scripts": {
