@@ -109,7 +109,9 @@ var stringify = MyModel.stringify(undefined,2);
 > myModel.on("change:username",function);
 
 ```javascript
-var myModel = MyModel.on("change:username",function(newValue,OldValue{
+var myModel = MyModel.on("change:username",function(newValue,OldValue,next){
 
+	// Put you code here
+	next();
 });
 ```
