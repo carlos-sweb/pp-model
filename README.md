@@ -90,7 +90,7 @@ var MyData = MyModel.pick(key1,key2,key3);
 ```
 
 #### omit
->  >  Return data only key not defined
+> Return data only key not defined
 
 ```javascript
 var MyData = MyModel.omit(key1,key2);
