@@ -99,6 +99,6 @@ var MyData = MyModel.omit(key1,key2);
 >  return string from object data, Use as JSON.stringify 
 
 ```javascript
-var newValue = MyModel.stringify(undefined,2);
+var stringify = MyModel.stringify(undefined,2);
 ```
 
