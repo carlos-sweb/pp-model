@@ -1,7 +1,7 @@
 # pp-model.js
 
 ```
-npm -i pp-mode.js --save
+npm i pp-mode.js --save
 ```
 
 ### How Use ?
