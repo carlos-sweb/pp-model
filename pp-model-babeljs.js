@@ -29,6 +29,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   }
 })(function (root, ppModel) {
   return function (preOptions) {
+    var preOptions = preOptions || {};
     return function (options) {
       // -------------------------------------------------------------------
 

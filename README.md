@@ -1,5 +1,9 @@
 # pp-model.js
 
+```
+npm -i pp-mode.js --save
+```
+
 ### How Use ?
 
 ```javascript

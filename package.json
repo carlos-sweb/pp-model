@@ -1,10 +1,12 @@
 {
   "name": "pp-model.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple Model Manipulation",
   "main": "pp-model.js",
   "scripts": {
-    "build": "npx babel pp-model.js --config-file ./babel.config.json  -o pp-model-babeljs.js && uglifyjs pp-model-babeljs.js -m -o pp-model.min.js && terser pp-model-babeljs.js -o pp-model.terser.min.js && cp pp-model.min.js ./examples/pp-model.min.js"
+    "build": "npx babel pp-model.js --config-file ./babel.config.json  -o pp-model-babeljs.js && uglifyjs pp-model-babeljs.js -m -o pp-model.min.js && terser pp-model-babeljs.js -o pp-model.terser.min.js && cp pp-model.min.js ./examples/pp-model.min.js",
+    "add-babel": "npm install --save-dev babel-cli",
+    "remove-babel": "npm remove --save-dev babel-cli"
   },
   "repository": {
     "type": "git",

@@ -24,7 +24,9 @@
   }
 })(function(root, ppModel) {
 
-return function(preOptions){	
+return function(preOptions){
+
+	var preOptions = preOptions || {};
 
 	return function( options ){
 		// -------------------------------------------------------------------
@@ -78,9 +80,9 @@ return function(preOptions){
 	    */
 		this.data = {};
 		// -------------------------------------------------------------------
-		Object.assign( this.data , preOptions.defaults || {} );
+		Object.assign( this.data , preOptions.defaults || { } );
 		// -------------------------------------------------------------------
-		Object.assign( this.data , options  || {});
+		Object.assign( this.data , options  || { });
 		// -------------------------------------------------------------------
 		/**
 		*@var get
