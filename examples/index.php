@@ -92,6 +92,6 @@ var MyModel = new model({
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/mode/javascript/javascript.min.js" integrity="sha512-9miXlEjnHTF+nVGdc2IGOLGTFW2wWkWbd1/7Ltlre+dM53ZSCUQ/PNN+jtsmYqr3ndiD5RW6XQJUm/Hz8JvyOQ==" crossorigin="anonymous"></script>
 <script type="text/javascript" src="pp-model.min.js" ></script>
-<script type="text/javascript" src="index.js?v=1203320447525"></script>
+<script type="text/javascript" src="index.js?v=<?=rand(0,5000000000000)?>"></script>
 </body>
 </html>

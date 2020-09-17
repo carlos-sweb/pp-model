@@ -1,3 +1,18 @@
+var codes = document.querySelectorAll("[code]");
+
+codes.forEach(( code )=>{
+    CodeMirror.fromTextArea(code, {
+         lineNumbers: true,
+         mode:'javascript',
+         theme:'ayu-mirage',     
+         readOnly:true,
+         gutters:{
+           className:"mdc-elevation--z2"
+         }
+    });
+});
+
+
 var model = new ppModel({
 	
 	defaults:{
@@ -23,8 +38,8 @@ var myModel = new model({
 
 });
 
-myModel.set("age",55);
+//myModel.set("age",55);
 
-var div = document.getElementById("showmy");
+//var div = document.getElementById("showmy");
 
-div.innerText = myModel.stringify(undefined,3);
+//div.innerText = myModel.stringify(undefined,3);
