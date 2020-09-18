@@ -192,6 +192,7 @@ return function(preOptions){
 		*@var
 		*@type {Function}
 		*@description - verifica si es boolean la llave consultada
+		* Check https://github.com/jimbrittain/isBoolean/blob/master/isBoolean.js
 		*/
 		this.isBoolean = function( key ){
 			if( this.data.hasOwnProperty(key) ){
