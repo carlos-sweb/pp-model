@@ -93,9 +93,14 @@ Array-like values such as arguments objects, arrays, buffers, strings, or jQuery
 
 <p class="title is-4 underline" >stringify:<span class="has-text-info" >&nbsp;[Function]</span></p>
 <p class="notification is-info is-light">Native Function&nbsp;<a target="_BLANK" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify">[Check]</a></p><hr>
-
-<p class="title is-2 underline" >Example:</p>
-
+<p class="title is-3" >Events</p>
+<p class="title is-4 underline" >on:<span class="has-text-info" >&nbsp;[Function]</span></p>
+<p class="notification is-info is-light">Bind a callback function to an object. The callback will be invoked whenever the event is fired. If you have a large number of different events on a page, the convention is to use colons to namespace them: "poll:start", or "change:selection". The event string may also be a space-delimited list of several events...</p>
+<textarea code >MyModel.on("change:username",function( newValue , OldValue , next ){
+	// Put you code here
+	next();
+})</textarea>
+<hr>
 </div>
 </section>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
