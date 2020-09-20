@@ -36,7 +36,7 @@
 <p class="title is-3" >Install</p>
 
 <div class="notification is-info is-light  elevation"><!--<button class="delete"></button>--><i>npm i pp-mode.js --save</i></div>
-<br>
+<hr>
 <p class="title is-3" >Initialize</p>
 <textarea code >// Declare model here
 var model = new ppModel({
