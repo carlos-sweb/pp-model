@@ -101,6 +101,23 @@ Array-like values such as arguments objects, arrays, buffers, strings, or jQuery
 	next();
 })</textarea>
 <hr>
+
+<div class="columns is-vcentered" >
+	<div class="column " >
+		<figure class="image is-128x128">
+<img class="is-rounded elevation"  src="https://avatars3.githubusercontent.com/u/15951745?s=128&u=8a6fe8190c3b8f8827026a051fc5c5523a0b92a5&v=4" alt="">	
+</figure>
+
+	</div>
+	<div class="column is-four-fifths" >
+		<p>You can contact me by e-mail <a href="mailto:c4rl0sill3sc4@gmail.com">c4rl0sill3sc4@gmail.com</a></p>
+	</div>
+</div>
+
+
+
+
+
 </div>
 </section>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
