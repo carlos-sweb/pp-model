@@ -32,12 +32,16 @@
 	<h1 class="title is-1 underline">pp-model.js</h1>
     <p class="subtitle">Simple Model Manipualtion</p><hr>
 
-
-<p class="title is-3" >Install</p>
-
+<p class="title is-3">Getting Started</p>
+<p>In the web project  include pp-model.js with:</p><br>
+<textarea code ><script src="https://cdn.jsdelivr.net/npm/pp-model.js@1.0.4/pp-model.min.js" ></script></textarea>
+<br>
+<p>OR</p><br>
+<p class="title is-4" >Install</p>
 <div class="notification is-info is-light  elevation"><!--<button class="delete"></button>--><i>npm i pp-mode.js --save</i></div>
 <hr>
-<p class="title is-3" >Initialize</p>
+<p class="title is-4" >Initialize</p>
+<p>Models are the heart of any JavaScript application.</p><br>
 <textarea code >// Declare model here
 var model = new ppModel({
 	defaults:{
@@ -51,6 +55,15 @@ var MyModel = new model({
 		skill:["Vue.js","Backbone.js","Angular.js"],
 		adress:"Adress, city , contry"
 });
+// you would like to change the value
+MyModel.set('age',30);
+
+// you would like to get the any value
+
+console.log( MyModel.get('age') );
+// output = 30
+
+
 </textarea><hr>
 <p class="title is-3" >Methods</p>
 <p class="title is-4 underline">getAll:<span class="has-text-info" >&nbsp;[Function]</span></p>
@@ -121,7 +134,7 @@ Array-like values such as arguments objects, arrays, buffers, strings, or jQuery
 </div>
 </section>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/mode/javascript/javascript.min.js" integrity="sha512-9miXlEjnHTF+nVGdc2IGOLGTFW2wWkWbd1/7Ltlre+dM53ZSCUQ/PNN+jtsmYqr3ndiD5RW6XQJUm/Hz8JvyOQ==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/mode/javascript/javascript.min.js" integrity="sha512-9miXlEjnHTF+nVGdc2IGOLGTFW2wWkWbd1/7Ltlre+dM53ZSCUQ/PNN+jtsmYqr3ndiD5RW6XQJUm/Hz8JvyOQ==" crossorigin="anonymous"></script>	
 <script type="text/javascript" src="pp-model.min.js" ></script>
 <script type="text/javascript" src="index.js?v=<?=rand(0,5000000000000)?>"></script>
 </body>

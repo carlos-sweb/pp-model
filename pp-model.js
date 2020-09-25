@@ -303,8 +303,7 @@ return function(preOptions){
 	    this.stringify = function( opt1 , opt2 ){
 	    	return JSON.stringify(this.data,opt1,opt2);
 	    }
-	    // -------------------------------------------------------------------
-		
+	    // -------------------------------------------------------------------		
 	}
 
 }
