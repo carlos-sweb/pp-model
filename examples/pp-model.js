@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
  * @author Carlos Illesca
- * @version 1.0.0 (2020/01/01 03:18 PM)
+ * @version 1.0.5 (2020/09/25 23:14 PM)
  * Released under the MIT License
  */
 (function(global , factory ){

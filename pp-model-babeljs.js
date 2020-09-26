@@ -14,20 +14,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
  * @version 1.0.0 (2020/01/01 03:18 PM)
  * Released under the MIT License
  */
-(function (factory) {
-  var root = (typeof self === "undefined" ? "undefined" : _typeof(self)) == 'object' && self.self === self && self || (typeof global === "undefined" ? "undefined" : _typeof(global)) == 'object' && global.global === global && global;
-
-  if (typeof define === 'function' && define.amd) {
-    define(['exports'], function (exports) {
-      root.ppModel = factory(root, exports);
-      module.exports = root.ppModel;
-    });
-  } else if (typeof exports !== 'undefined') {
-    factory(root, exports); // Finally, as a browser global.
-  } else {
-    root.ppModel = factory(root, {});
-  }
-})(function (root, ppModel) {
+(function (global, factory) {
+  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define('ppModel', factory) : (global = global || self, function () {
+    var exports = global.ppModel = factory();
+  }());
+})(void 0, function () {
   return function (preOptions) {
     var preOptions = preOptions || {};
     return function (options) {
@@ -198,6 +189,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       *@var
       *@type {Function}
       *@description - verifica si es boolean la llave consultada
+      * Check https://github.com/jimbrittain/isBoolean/blob/master/isBoolean.js
       */
 
 
@@ -333,7 +325,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       this.stringify = function (opt1, opt2) {
         return JSON.stringify(this.data, opt1, opt2);
-      }; // -------------------------------------------------------------------
+      }; // -------------------------------------------------------------------		
 
     };
   }; //-----------------------------------------------------------------------------

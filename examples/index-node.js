@@ -1,3 +1,19 @@
-var ppModel = require("./../pp-model.js");
+var ppModel = require("./../pp-model.min.js");
 
-console.log( ppModel );
+var model = ppModel({
+	defaults:{
+		name:"Carlos Illesca"
+	}
+});
+
+
+var user = new model({
+	age:30,
+	skill:["vue","backbone","underscore","lodash","voca"]
+});
+
+console.log( user.getAll() );
+
+
+
+
