@@ -2,22 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pp-model.js</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>pp-model.js - Documentation</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div id="main">
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-    <h1 class="page-title">Source: pp-model.js</h1>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#data">data</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#emit">emit</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#events">events</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#get">get</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getAll">getAll</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#has">has</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#isBoolean">isBoolean</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#isEmpty">isEmpty</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#isString">isString</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#keys">keys</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#omit">omit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#on">on</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#pick">pick</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#set">set</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#stringify">stringify</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#values">values</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">pp-model.js</h1>
+    
 
     
 
@@ -28,7 +41,7 @@
         <article>
             <pre class="prettyprint source linenums"><code>/*!!
  * Power Panel Model &lt;https://github.com/carlos-sweb/pp-model>
- * @author Carlos Illesca
+ * @author Carlos Illesca &lt;c4rl0sill3sc4@gmail.com>
  * @version 1.0.0 (2020/01/01 03:18 PM)
  * Released under the MIT License
  */
@@ -53,19 +66,16 @@ return function(preOptions){
 	var preOptions = preOptions || {};
 
 	return function( options ){	
-
+		
 		/**
-		*@property {object} events Esto es la descripción al parecer
-		*@description - Contenedor de las llaves y su funcion para ser
-		*ejecutadas en el momento de ser llamadas
-		*/
-		this.events = {};	
-
+		 *@property {object} events - Container of events
+		 */
+		this.events = {};
 		/**
-		*@var on
-		*@type {Function}
-		*@description - Función que se encarga de almacenar en el objeto 
-		* events las llaves y la funcion de llamada
+		*on
+		*@param {string} eventName - name event 
+		*@param {function} callbacks - Function for execute when emit event name
+		*@returns {void} 
 		*/
 		this.on = function( eventName , callbacks ){
 	        if( typeof eventName == "string" ){
@@ -78,10 +88,9 @@ return function(preOptions){
 	        }        
 	    }	    
 	    /**
-	    *@var emit
-	    *@type {Function}
-	    *@description - Función para ejecutar la funcion relacionada a la llave
-	    * que se esta emitiendo
+	    *emit
+		*@param {string} eventName - name for events call
+		*@returns {void}	    
 	    */
 		this.emit = function( eventName ){        
 	        var i, listeners, length, args = [].slice.call(arguments, 1);
@@ -94,10 +103,7 @@ return function(preOptions){
 	        }
 	    }	    
 	    /**
-	    *@var data
-	    *@type {Object}
-	    *@description - Este es el contenedor de la data a guardar 
-	    * para usar el modelo
+	    *@property {object} data - container for all data	    
 	    */
 		this.data = {};
 		// -------------------------------------------------------------------
@@ -106,10 +112,9 @@ return function(preOptions){
 		Object.assign( this.data , options  || { });
 		// -------------------------------------------------------------------
 		/**
-		*@var get
-		*@type {Function}
-		*@description - funcion que obtiene el valor de data segun la llave que 
-		* se consulta
+		*get
+		*@param {string} key - name key for find
+		*@returns {(string|number|boolean)}
 		*/
 		this.get = function( key ){
 			
@@ -167,24 +172,20 @@ return function(preOptions){
 
 		}		
 		/**
-		*@var has
-		*@type {Function}
+		*has
+		*@param {string} key - key for check if exists
 		*@description - funcion que verifica la existencia de una llave en la data
 		*/
 		this.has = function( key ){
-
 			return this.data.hasOwnProperty(key);
-
 		}		
 		/**
-		*@var getAll
-		*@type {Function}
+		*getAll		
 		*@description - funcion que retorna una copia de la data completa
+		*@returns {object} - return copy from data
 		*/
 		this.getAll = function(){
-
 			return Object.assign({...this.data},{});
-
 		}		
 		/**
 		*@var keys
@@ -195,9 +196,9 @@ return function(preOptions){
 			return Object.keys( this.data );
 		}		
 		/**
-		*@var values
-		*@type {Function}
+		*@values
 		*@description - function que retorna un array con todos los valores
+		*@returns {array} - return array from values of data
 		*/
 		this.values = function(){
 
@@ -218,9 +219,9 @@ return function(preOptions){
 			return false;
 		}		
 		/**
-		*@var isString
-		*@type {Function}
-		*@description - funcion que verifica se la llave consultada es una cadena
+		*isString
+		*@param {string} key - key for compare
+		*@description - function that check in data for key if value is string
 		*/
 		this.isString = function( key ){
 
@@ -328,17 +329,13 @@ return function(preOptions){
 
 </div>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#data">data</a></li><li><a href="global.html#emit">emit</a></li><li><a href="global.html#events">events</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getAll">getAll</a></li><li><a href="global.html#has">has</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isEmpty">isEmpty</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#omit">omit</a></li><li><a href="global.html#on">on</a></li><li><a href="global.html#pick">pick</a></li><li><a href="global.html#set">set</a></li><li><a href="global.html#stringify">stringify</a></li><li><a href="global.html#values">values</a></li></ul>
-</nav>
-
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Tue Nov 17 2020 00:19:38 GMT-0300 (GMT-03:00)
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Nov 17 2020 23:54:22 GMT-0300 (GMT-03:00) using the Minami theme.
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
 </body>
 </html>

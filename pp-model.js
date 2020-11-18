@@ -1,6 +1,6 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
- * @author Carlos Illesca
+ * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
  * @version 1.0.0 (2020/01/01 03:18 PM)
  * Released under the MIT License
  */
@@ -25,19 +25,16 @@ return function(preOptions){
 	var preOptions = preOptions || {};
 
 	return function( options ){	
-
+		
 		/**
-		*@property {object} events Esto es la descripción al parecer
-		*@description - Contenedor de las llaves y su funcion para ser
-		*ejecutadas en el momento de ser llamadas
-		*/
-		this.events = {};	
-
+		 *@property {object} events - Container of events
+		 */
+		this.events = {};
 		/**
-		*@var on
-		*@type {Function}
-		*@description - Función que se encarga de almacenar en el objeto 
-		* events las llaves y la funcion de llamada
+		*on
+		*@param {string} eventName - name event 
+		*@param {function} callbacks - Function for execute when emit event name
+		*@returns {void} 
 		*/
 		this.on = function( eventName , callbacks ){
 	        if( typeof eventName == "string" ){
@@ -50,10 +47,9 @@ return function(preOptions){
 	        }        
 	    }	    
 	    /**
-	    *@var emit
-	    *@type {Function}
-	    *@description - Función para ejecutar la funcion relacionada a la llave
-	    * que se esta emitiendo
+	    *emit
+		*@param {string} eventName - name for events call
+		*@returns {void}	    
 	    */
 		this.emit = function( eventName ){        
 	        var i, listeners, length, args = [].slice.call(arguments, 1);
@@ -66,10 +62,7 @@ return function(preOptions){
 	        }
 	    }	    
 	    /**
-	    *@var data
-	    *@type {Object}
-	    *@description - Este es el contenedor de la data a guardar 
-	    * para usar el modelo
+	    *@property {object} data - container for all data	    
 	    */
 		this.data = {};
 		// -------------------------------------------------------------------
@@ -78,10 +71,9 @@ return function(preOptions){
 		Object.assign( this.data , options  || { });
 		// -------------------------------------------------------------------
 		/**
-		*@var get
-		*@type {Function}
-		*@description - funcion que obtiene el valor de data segun la llave que 
-		* se consulta
+		*get
+		*@param {string} key - name key for find
+		*@returns {(string|number|boolean)}
 		*/
 		this.get = function( key ){
 			
@@ -139,24 +131,20 @@ return function(preOptions){
 
 		}		
 		/**
-		*@var has
-		*@type {Function}
+		*has
+		*@param {string} key - key for check if exists
 		*@description - funcion que verifica la existencia de una llave en la data
 		*/
 		this.has = function( key ){
-
 			return this.data.hasOwnProperty(key);
-
 		}		
 		/**
-		*@var getAll
-		*@type {Function}
+		*getAll		
 		*@description - funcion que retorna una copia de la data completa
+		*@returns {object} - return copy from data
 		*/
 		this.getAll = function(){
-
 			return Object.assign({...this.data},{});
-
 		}		
 		/**
 		*@var keys
@@ -167,9 +155,9 @@ return function(preOptions){
 			return Object.keys( this.data );
 		}		
 		/**
-		*@var values
-		*@type {Function}
+		*@values
 		*@description - function que retorna un array con todos los valores
+		*@returns {array} - return array from values of data
 		*/
 		this.values = function(){
 
@@ -190,9 +178,9 @@ return function(preOptions){
 			return false;
 		}		
 		/**
-		*@var isString
-		*@type {Function}
-		*@description - funcion que verifica se la llave consultada es una cadena
+		*isString
+		*@param {string} key - key for compare
+		*@description - function that check in data for key if value is string
 		*/
 		this.isString = function( key ){
 

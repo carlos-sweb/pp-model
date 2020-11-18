@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npx babel pp-model.js --config-file ./babel.config.json  -o pp-model-babeljs.js && uglifyjs pp-model-babeljs.js -m -o pp-model.min.js && terser pp-model-babeljs.js -o pp-model.terser.min.js && cp pp-model.min.js ./examples/pp-model.min.js",
     "add-babel": "npm install --save-dev babel-cli && npm install --save-dev @babel/preset-env",
-    "remove-babel": "npm remove --save-dev babel-cli"
+    "remove-babel": "npm remove --save-dev babel-cli",
+    "jsdoc": "jsdoc -c jsdoc.json --readme README.md  pp-model.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,8 @@
     "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.5",
-    "babel-minify": "^0.5.1"
+    "babel-minify": "^0.5.1",
+    "minami": "^1.2.3"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
