@@ -164,12 +164,14 @@ return function(preOptions){
 			return Object.values( this.data );
 
 		}		
+		
+		/**https://github.com/jimbrittain/isBoolean/blob/master/isBoolean.js*/
 		/**
-		*@var
-		*@type {Function}
+		*isBoolean
+		*@param {string} key - key from validate
 		*@description - verifica si es boolean la llave consultada
-		* Check https://github.com/jimbrittain/isBoolean/blob/master/isBoolean.js
-		*/
+		*
+		*/		
 		this.isBoolean = function( key ){
 			if( this.data.hasOwnProperty(key) ){
 				return typeof this.data[key] == 'boolean';
