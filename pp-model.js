@@ -89,8 +89,8 @@ return function(preOptions){
 		}
 
 		/**
-		*@var set
-		*@type {Function}
+		*set
+		*@returns {void}
 		*/
 		this.set = function(){
 
@@ -147,9 +147,9 @@ return function(preOptions){
 			return Object.assign({...this.data},{});
 		}		
 		/**
-		*@var keys
-		*@type {Function}
+		*keys
 		*@description - function que retorna un array con todas las llaves
+		*@returns {array}
 		*/
 		this.keys = function(){
 			return Object.keys( this.data );
