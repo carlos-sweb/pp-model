@@ -196,9 +196,10 @@ return function(preOptions){
 
 		}		
 		/**
-		*@var isEmpty
-		*@type {Function}
+		*isEmpty
+		*@param {string} key - name from object
 		*@description - funcion que verifica si la llave consultada esta vacia
+		*@returns {boolean}
 		*/
 		this.isEmpty = function( key ){
 
@@ -222,9 +223,9 @@ return function(preOptions){
 
 		}		
 		/**
-		*@var pick
-		*@type {Function}
+		*pick		
 		*@description - funcion que retorna solmanete las llaves solicitadas
+		*@returns {object}
 		*/
 		this.pick = function(){
 	      var args = [].slice.call(arguments);
@@ -245,9 +246,9 @@ return function(preOptions){
 	      };
 	    }	    
 	    /**
-	    *@var omit
-	    *@type Function
-	    *@description - Function que omite keys dadas para un objeto
+	    *omit
+		*@description - Function que omite keys dadas para un objeto
+		*@returns {object}
 	    */
 	    this.omit = function(){
 	      var args = [].slice.call(arguments);     
@@ -269,9 +270,11 @@ return function(preOptions){
 	      };
 	    }	    
 	    /**
-	    *@var stringify
-	    *@type {Function}
-	    *@description - esta funcion retorna el json en formato de texto
+	    *stringify
+		*@param {(number|null)} nose - nose que pasa aqui 
+		*@param {string} separador - el separador o tabulador
+		*@description - esta funcion retorna el json en formato de texto
+		*@returns {string}
 	    */
 	    this.stringify = function( opt1 , opt2 ){
 	    	return JSON.stringify(this.data,opt1,opt2);
