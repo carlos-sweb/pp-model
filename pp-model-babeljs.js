@@ -10,7 +10,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
- * @author Carlos Illesca
+ * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
  * @version 1.0.0 (2020/01/01 03:18 PM)
  * Released under the MIT License
  */
@@ -21,22 +21,25 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 })(void 0, function () {
   return function (preOptions) {
     var preOptions = preOptions || {};
+    /**
+     * A namespace.
+     * @namespace ppModel
+     */
+
     return function (options) {
-      // -------------------------------------------------------------------
-
-      /*
-      *@var events
-      *@type {Object}
-      *@description - Contenedor de las llaves y su funcion para ser
-      *ejecutadas en el momento de ser llamadas
-      */
-      this.events = {}; // -------------------------------------------------------------------
-
       /**
-      *@var on
-      *@type {Function}
-      *@description - Función que se encarga de almacenar en el objeto 
-      * events las llaves y la funcion de llamada
+       *@property {object} events - Container of events
+       *@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
+       *@memberof ppModel
+       */
+      this.events = {};
+      /**
+      *on
+      *@param {string} eventName - name event 
+      *@param {function} callbacks - Function for execute when emit event name
+      *@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
+      *@memberof ppModel
+      *@returns {void} 
       */
 
       this.on = function (eventName, callbacks) {
@@ -49,13 +52,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             this.events[eventName].push(callbacks);
           }
         }
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var emit
-      *@type {Function}
-      *@description - Función para ejecutar la funcion relacionada a la llave
-      * que se esta emitiendo
+      };
+      /**
+      *emit
+      *@param {string} eventName - name for events call
+      *@memberof ppModel
+      *@returns {void}	    
       */
 
 
@@ -73,13 +75,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             listeners[i].apply(this, args);
           }
         }
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var data
-      *@type {Object}
-      *@description - Este es el contenedor de la data a guardar 
-      * para usar el modelo
+      };
+      /**
+      *@property {object} data - container for all data
+      *@memberof ppModel	    
       */
 
 
@@ -90,10 +89,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       Object.assign(this.data, options || {}); // -------------------------------------------------------------------
 
       /**
-      *@var get
-      *@type {Function}
-      *@description - funcion que obtiene el valor de data segun la llave que 
-      * se consulta
+      *get
+      *@param {string} key - name key for find
+      *@memberof ppModel
+      *@returns {(string|number|boolean)}
       */
 
       this.get = function (key) {
@@ -106,11 +105,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             return null;
           }
         }
-      }; // -------------------------------------------------------------------
-
+      };
       /**
-      *@var set
-      *@type {Function}
+      *set
+      *@memberof ppModel
+      *@returns {void}
       */
 
 
@@ -139,57 +138,59 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             }
           }
         }
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var has
-      *@type {Function}
+      };
+      /**
+      *has
+      *@param {string} key - key for check if exists
+      *@memberof ppModel
       *@description - funcion que verifica la existencia de una llave en la data
       */
 
 
       this.has = function (key) {
         return this.data.hasOwnProperty(key);
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var getAll
-      *@type {Function}
+      };
+      /**
+      *getAll		
       *@description - funcion que retorna una copia de la data completa
+      *@memberof ppModel
+      *@returns {object} - return copy from data
       */
 
 
       this.getAll = function () {
         return Object.assign(_objectSpread({}, this.data), {});
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var keys
-      *@type {Function}
+      };
+      /**
+      *keys
       *@description - function que retorna un array con todas las llaves
+      *@memberof ppModel
+      *@returns {array}
       */
 
 
       this.keys = function () {
         return Object.keys(this.data);
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var values
-      *@type {Function}
+      };
+      /**
+      *@values
       *@description - function que retorna un array con todos los valores
+      *@memberof ppModel
+      *@returns {array} - return array from values of data
       */
 
 
       this.values = function () {
         return Object.values(this.data);
-      }; // -------------------------------------------------------------------
+      };
+      /**https://github.com/jimbrittain/isBoolean/blob/master/isBoolean.js*/
 
-      /*
-      *@var
-      *@type {Function}
+      /**
+      *isBoolean
+      *@param {string} key - key from validate
+      *@memberof ppModel
       *@description - verifica si es boolean la llave consultada
-      * Check https://github.com/jimbrittain/isBoolean/blob/master/isBoolean.js
+      *
       */
 
 
@@ -199,12 +200,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
 
         return false;
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var isString
-      *@type {Function}
-      *@description - funcion que verifica se la llave consultada es una cadena
+      };
+      /**
+      *isString
+      *@param {string} key - key for compare
+      *@memberof ppModel
+      *@description - function that check in data for key if value is string
       */
 
 
@@ -214,12 +215,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
 
         return false;
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var isEmpty
-      *@type {Function}
+      };
+      /**
+      *isEmpty
+      *@param {string} key - name from object
       *@description - funcion que verifica si la llave consultada esta vacia
+      *@memberof ppModel
+      *@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
+      *@returns {boolean}
       */
 
 
@@ -241,12 +244,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             return value.length == 0 ? !0 : !1;
           }
         }
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var pick
-      *@type {Function}
+      };
+      /**
+      *pick		
       *@description - funcion que retorna solmanete las llaves solicitadas
+      *@memberof ppModel
+      *@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
+      *@returns {object}
       */
 
 
@@ -277,12 +281,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
 
         ;
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var omit
-      *@type Function
+      };
+      /**
+      *omit
       *@description - Function que omite keys dadas para un objeto
+      *@memberof ppModel
+      *@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
+      *@returns {object}
       */
 
 
@@ -314,12 +319,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
 
         ;
-      }; // -------------------------------------------------------------------
-
-      /*
-      *@var stringify
-      *@type {Function}
+      };
+      /**
+      *stringify
+      *@param {(number|null)} nose - nose que pasa aqui 
+      *@param {string} separador - el separador o tabulador
       *@description - esta funcion retorna el json en formato de texto
+      *@memberof ppModel
+      *@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
+      *@returns {string}
       */
 
 

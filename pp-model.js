@@ -22,18 +22,28 @@
 
 return function(preOptions){
 
+
 	var preOptions = preOptions || {};
+
+	/**
+	 * A namespace.
+	 * @namespace ppModel
+	 */
 
 	return function( options ){	
 		
 		/**
 		 *@property {object} events - Container of events
+		 *@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
+		 *@memberof ppModel
 		 */
 		this.events = {};
 		/**
 		*on
 		*@param {string} eventName - name event 
 		*@param {function} callbacks - Function for execute when emit event name
+		*@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
+		*@memberof ppModel
 		*@returns {void} 
 		*/
 		this.on = function( eventName , callbacks ){
@@ -49,6 +59,7 @@ return function(preOptions){
 	    /**
 	    *emit
 		*@param {string} eventName - name for events call
+		*@memberof ppModel
 		*@returns {void}	    
 	    */
 		this.emit = function( eventName ){        
@@ -62,7 +73,8 @@ return function(preOptions){
 	        }
 	    }	    
 	    /**
-	    *@property {object} data - container for all data	    
+		*@property {object} data - container for all data
+		*@memberof ppModel	    
 	    */
 		this.data = {};
 		// -------------------------------------------------------------------
@@ -73,6 +85,7 @@ return function(preOptions){
 		/**
 		*get
 		*@param {string} key - name key for find
+		*@memberof ppModel
 		*@returns {(string|number|boolean)}
 		*/
 		this.get = function( key ){
@@ -90,6 +103,7 @@ return function(preOptions){
 
 		/**
 		*set
+		*@memberof ppModel
 		*@returns {void}
 		*/
 		this.set = function(){
@@ -133,6 +147,7 @@ return function(preOptions){
 		/**
 		*has
 		*@param {string} key - key for check if exists
+		*@memberof ppModel
 		*@description - funcion que verifica la existencia de una llave en la data
 		*/
 		this.has = function( key ){
@@ -141,6 +156,7 @@ return function(preOptions){
 		/**
 		*getAll		
 		*@description - funcion que retorna una copia de la data completa
+		*@memberof ppModel
 		*@returns {object} - return copy from data
 		*/
 		this.getAll = function(){
@@ -149,6 +165,7 @@ return function(preOptions){
 		/**
 		*keys
 		*@description - function que retorna un array con todas las llaves
+		*@memberof ppModel
 		*@returns {array}
 		*/
 		this.keys = function(){
@@ -157,6 +174,7 @@ return function(preOptions){
 		/**
 		*@values
 		*@description - function que retorna un array con todos los valores
+		*@memberof ppModel
 		*@returns {array} - return array from values of data
 		*/
 		this.values = function(){
@@ -169,6 +187,7 @@ return function(preOptions){
 		/**
 		*isBoolean
 		*@param {string} key - key from validate
+		*@memberof ppModel
 		*@description - verifica si es boolean la llave consultada
 		*
 		*/		
@@ -182,6 +201,7 @@ return function(preOptions){
 		/**
 		*isString
 		*@param {string} key - key for compare
+		*@memberof ppModel
 		*@description - function that check in data for key if value is string
 		*/
 		this.isString = function( key ){
@@ -199,6 +219,8 @@ return function(preOptions){
 		*isEmpty
 		*@param {string} key - name from object
 		*@description - funcion que verifica si la llave consultada esta vacia
+		*@memberof ppModel
+		*@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
 		*@returns {boolean}
 		*/
 		this.isEmpty = function( key ){
@@ -225,6 +247,8 @@ return function(preOptions){
 		/**
 		*pick		
 		*@description - funcion que retorna solmanete las llaves solicitadas
+		*@memberof ppModel
+		*@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
 		*@returns {object}
 		*/
 		this.pick = function(){
@@ -248,6 +272,8 @@ return function(preOptions){
 	    /**
 	    *omit
 		*@description - Function que omite keys dadas para un objeto
+		*@memberof ppModel
+		*@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
 		*@returns {object}
 	    */
 	    this.omit = function(){
@@ -274,6 +300,8 @@ return function(preOptions){
 		*@param {(number|null)} nose - nose que pasa aqui 
 		*@param {string} separador - el separador o tabulador
 		*@description - esta funcion retorna el json en formato de texto
+		*@memberof ppModel
+		*@author Carlos Illesca <c4rl0sill3sc4@gmail.com>
 		*@returns {string}
 	    */
 	    this.stringify = function( opt1 , opt2 ){
