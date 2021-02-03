@@ -15,13 +15,12 @@
     var exports = global.ppModel = factory();    
 
 	}()
-
+	
 ));
 
 })( this,(function() {
 
 return function(preOptions){
-
 
 	var preOptions = preOptions || {};
 
