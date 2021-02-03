@@ -48,18 +48,18 @@ var model = new ppModel({
 		salary:5000
 	}
 });
-// How use ?
+// How to use it ?
 var MyModel = new model({
 		username:"MyUsername",
 		age:33,
 		skill:["Vue.js","Backbone.js","Angular.js"],
 		adress:"Adress, city , contry"
 });
-// you would like to change the value
+
+// If you want to change the value
 MyModel.set('age',30);
 
-// you would like to get the any value
-
+// If you want to get any value
 console.log( MyModel.get('age') );
 // output = 30
 
