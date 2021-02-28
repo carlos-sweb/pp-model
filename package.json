@@ -4,8 +4,7 @@
   "description": "Simple Model Manipulation",
   "main": "pp-model.js",
   "scripts": {
-    "build": "terser --output pp-model.min.js --compress --mangle -- pp-model.js && cp pp-model.min.js ./examples/pp-model.min.js",      
-    "jsdoc": "jsdoc -c jsdoc.json --readme README.md  pp-model.js"
+    "build": "terser --output pp-model.min.js --compress --mangle -- pp-model.js && cp pp-model.min.js ./examples/pp-model.min.js",    
   },
   "repository": {
     "type": "git",
