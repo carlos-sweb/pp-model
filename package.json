@@ -1,12 +1,10 @@
 {
   "name": "pp-model.js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Simple Model Manipulation",
   "main": "pp-model.js",
   "scripts": {
-    "build": "npx babel pp-model.js --config-file ./babel.config.json  -o pp-model-babeljs.js && uglifyjs pp-model-babeljs.js -m -o pp-model.min.js && terser pp-model-babeljs.js -o pp-model.terser.min.js && cp pp-model.min.js ./examples/pp-model.min.js",
-    "add-babel": "npm install --save-dev babel-cli && npm install --save-dev @babel/preset-env",
-    "remove-babel": "npm remove --save-dev babel-cli",
+    "build": "terser --output pp-model.min.js --compress --mangle -- pp-model.js && cp pp-model.min.js ./examples/pp-model.min.js",      
     "jsdoc": "jsdoc -c jsdoc.json --readme README.md  pp-model.js"
   },
   "repository": {

@@ -1,8 +1,8 @@
-var ppModel = require("./../pp-model.min.js");
+var ppModel = require("./pp-model.min.js");
 
 var model = ppModel({
 	defaults:{
-		name:"Carlos Illesca"
+		name:"nickname"
 	}
 });
 
