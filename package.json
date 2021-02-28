@@ -11,7 +11,9 @@
     "url": "git+https://github.com/carlos-sweb/pp-model.git"
   },
   "keywords": [
-    "model"
+    "model",
+    "data-model",
+    "data"
   ],
   "author": "Carlos Illesca",
   "license": "MIT",
