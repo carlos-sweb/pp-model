@@ -64,9 +64,8 @@ get all data
 get data from key
 ```
 ### keys: [Function]
-```
-Native Function [Check](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
-```
+```Native Function ```[Check](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+
 ### values: [Function]
 
 ```
