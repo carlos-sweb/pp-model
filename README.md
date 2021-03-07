@@ -65,7 +65,7 @@ get data from key
 ```
 ### keys: [Function]
 
-___Native Function [Check](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)___
+Native Function [Check](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
 
 ### values: [Function]
 
