@@ -101,9 +101,9 @@ Set a hash of attributes (one or many) on the model. If any of the attributes ch
 Return a copy of the object, filtered to omit the disallowed keys (or array of keys). Alternatively accepts a predicate indicating which keys to omit.
 ```
 ### stringify: [Function]
-
+```
 Native Function [Check]
-
+```
 ## Events
 
 ### on: [Function]
