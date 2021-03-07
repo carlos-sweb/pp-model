@@ -19,6 +19,6 @@ Or
 
 npm i pp-mode.js --save
 
-### Initialize
+## Initialize
 
 Models are the heart of any JavaScript application.
