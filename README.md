@@ -50,3 +50,60 @@ MyModel.set('age',30);
 console.log( MyModel.get('age') );
 // output = 30
 ```
+
+## Methods
+
+### getAll: [Function]
+
+```
+get all data
+```
+
+### get: [Function]
+```
+get data from key
+```
+### keys: [Function]
+```
+Native Function [Check]
+```
+### values: [Function]
+
+```
+Native Function [Check]
+```
+
+### has: [Function]
+```
+Native Function [Check]
+```
+### isBoolean: [Function]
+
+```
+Checks if value is classified as a boolean primitive or object.
+```
+### isString: [Function]
+```
+Checks if value is classified as a String primitive or object.
+```
+
+### isEmpty: [Function]
+
+```
+Checks if value is an empty object, collection, map, or set. Objects are considered empty if they have no own enumerable string keyed properties. Array-like values such as arguments objects, arrays, buffers, strings, or jQuery-like collections are considered empty if they have a length of 0. Similarly, maps and sets are considered empty if they have a size of 0.
+```
+### set: [Function]
+```
+Set a hash of attributes (one or many) on the model. If any of the attributes change the model's state, a "change" event will be triggered on the model. Change events for specific attributes are also triggered, and you can bind to those as well, for example: change:title, and change:content. You may also pass individual keys and values.
+```
+### omit: [Function]
+```
+Return a copy of the object, filtered to omit the disallowed keys (or array of keys). Alternatively accepts a predicate indicating which keys to omit.
+```
+### stringify: [Function]
+
+Native Function [Check]
+
+## Events
+
+### on: [Function]
