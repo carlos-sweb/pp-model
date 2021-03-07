@@ -18,3 +18,7 @@ Or
 ## Install
 
 npm i pp-mode.js --save
+
+### Initialize
+
+Models are the heart of any JavaScript application.
