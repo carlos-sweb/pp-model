@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+<script type="text/javascript" src="node_modules/pp-events/pp-events.min.js"  ></script>
+<script type="text/javascript" src="pp-model.js"  ></script>
+<script type="text/javascript" >
+
+var m = new ppModel();
+
+var model = new m();
+
+
+model.on('change:hello',function( oldValue , nuevo){
+  console.log("Escucho un cambio");
+  console.log(oldValue);
+  console.log(nuevo);
+
+});
+
+model.on('example',function(){
+  console.log("example work");
+});
+
+
+model.emit('example');
+
+console.log( model.get('hello')  );
+
+
+
+model.set('hello','otro saludo');
+console.log(model.get('hello'));
+
+
+
+</script>
+</body>
+</html>
