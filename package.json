@@ -1,10 +1,10 @@
 {
   "name": "pp-model.js",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Simple Model Manipulation",
   "main": "pp-model.js",
   "scripts": {
-    "build": "terser --output pp-model.min.js --compress --mangle -- pp-model.js && cp pp-model.min.js ./examples/pp-model.min.js"
+    "compile": "terser --output pp-model.min.js --compress --mangle --comments false  -- pp-model.js && cp pp-model.min.js ./examples/pp-model.min.js"
   },
   "repository": {
     "type": "git",
