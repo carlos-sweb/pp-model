@@ -29,10 +29,10 @@ var model = new ppModel({
 
 // How to use it ?
 var MyModel = new model({
-		username:"MyUsername",
-		age:33,
-		skill:["Vue.js","Backbone.js","Angular.js","React.js"],
-		adress:"Adress, city , contry"
+   username:"MyUsername",
+   age:33,
+   skill:["Vue.js","Backbone.js","Angular.js","React.js"],
+   adress:"Adress, city , contry"
 });
 
 // If you want to the listen and filter
