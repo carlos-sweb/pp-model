@@ -59,13 +59,14 @@ console.log( MyModel.get('salary') );
 
 ### `getAll`
 
-```
+```html
 get all data
 ```
 ---
 
 ### `get`
-```
+
+```html
 get data from key
 ```
 ---
@@ -78,26 +79,26 @@ Native Function [Check](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 
 ### `values`
 
-```
+```html
 Native Function [Check]
 ```
 ---
 
 ### `has`
-```
+```html
 Native Function [Check]
 ```
 ---
 
 ### `isBoolean`
 
-```
+```html
 Checks if value is classified as a boolean primitive or object.
 ```
 ---
 
 ### `isString`
-```
+```html
 Checks if value is classified as a String primitive or object.
 ```
 
@@ -105,24 +106,25 @@ Checks if value is classified as a String primitive or object.
 
 ### `isEmpty`
 
-```
+```html
 Checks if value is an empty object, collection, map, or set. Objects are considered empty if they have no own enumerable string keyed properties. Array-like values such as arguments objects, arrays, buffers, strings, or jQuery-like collections are considered empty if they have a length of 0. Similarly, maps and sets are considered empty if they have a size of 0.
 ```
 ---
 
 ### `set`
-```
+```html
 Set a hash of attributes (one or many) on the model. If any of the attributes change the model's state, a "change" event will be triggered on the model. Change events for specific attributes are also triggered, and you can bind to those as well, for example: change:title, and change:content. You may also pass individual keys and values.
 ```
 ---
 
 ### `omit`
-```
+```html
 Return a copy of the object, filtered to omit the disallowed keys (or array of keys). Alternatively accepts a predicate indicating which keys to omit.
 ```
 ---
 
 ### `stringify`
-```
+
+```html
 Native Function [Check]
 ```
