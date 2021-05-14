@@ -3,8 +3,8 @@
 In the web project include pp-model.js with:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/pp-events@1.0.8/pp-events.min.js" ></script>
-<script src="https://cdn.jsdelivr.net/npm/pp-model.js@1.0.9/pp-model.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-events@latest/pp-events.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-model.js@latest/pp-model.min.js" ></script>
 ```
 
 Or
@@ -31,12 +31,23 @@ var model = new ppModel({
 var MyModel = new model({
 		username:"MyUsername",
 		age:33,
-		skill:["Vue.js","Backbone.js","Angular.js"],
+		skill:["Vue.js","Backbone.js","Angular.js","React.js"],
 		adress:"Adress, city , contry"
 });
 
+
+MyModel.on('change:salary',function( newValue , oldValue , next ){
+	// Example
+	if( newValue <= 4500 ){
+			next();
+	}
+
+})
+
+MyModel.set('salary',4000);
 // If you want to change the value
 MyModel.set('age',30);
+
 
 // If you want to get any value
 console.log( MyModel.get('age') );
