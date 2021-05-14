@@ -35,23 +35,25 @@ var MyModel = new model({
 		adress:"Adress, city , contry"
 });
 
-
+// If you want to the listen and filter
 MyModel.on('change:salary',function( newValue , oldValue , next ){
 	// Example
-	if( newValue <= 4500 ){
-			next();
+	if( newValue >= 4500 ){
+		next();
 	}
 
 })
 
-MyModel.set('salary',4000);
 // If you want to change the value
+MyModel.set('salary',4000);
 MyModel.set('age',30);
 
 
 // If you want to get any value
 console.log( MyModel.get('age') );
 // output = 30
+console.log( MyModel.get('salary') );
+// output = 5000
 ```
 
 ## Methods
