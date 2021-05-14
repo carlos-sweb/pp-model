@@ -41,7 +41,6 @@ MyModel.on('change:salary',function( newValue , oldValue , next ){
 	if( newValue >= 4500 ){
 		next();
 	}
-
 })
 
 // If you want to change the value
