@@ -22,9 +22,9 @@ Models are the heart of any JavaScript application.
 ```javascript
 // Declare model here
 var model = new ppModel({
-	defaults:{
-		salary:5000
-	}
+  defaults:{
+   salary:5000
+  }
 });
 
 // How to use it ?
