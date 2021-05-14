@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
  * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
- * @version 1.0.8 (2020/05/12 22:33 PM)
+ * @version 1.0.9 (2020/05/14 12:41 PM)
  * Released under the MIT License
  */
 (function(global , factory ){
@@ -28,7 +28,7 @@
   }
 
 })( this,(function( root , example , ppEvents ) {
-  var data = {},  
+  var data = {},
   toString = Object.prototype.toString,
   isObject = function( value ){
     return toString.call(value) === '[object Object]'
@@ -39,10 +39,13 @@
   isString = function( value ){
     return toString.call(value) === '[object String]'
   },
-  Events = toString.call(ppEvents)  ===  '[object Undefined]' ? null :  new ppEvents(),
-  ppModel = function( defaults, __model ){    
+  isUndefined = function( value ){
+    return toString.call( value ) === '[object Undefined]'
+  },
+  Events = isUndefined( ppEvents ) ? null :  new ppEvents(),
+  ppModel = function( defaults, __model ){
     if( isObject(defaults) ){
-      Object.assign(data,{...defaults})      
+      Object.assign(data,{...defaults})
     }
     if( isObject(__model) ){
         Object.assign(data,{...__model})
@@ -61,9 +64,14 @@
   }
   proto.set = function( key ,value ){
     if( isString(key)){
-      if( data.hasOwnProperty(key) ){          
-          this.emit( 'change:' + key , data[key] , value );
-          data[key] = value;
+      if( data.hasOwnProperty(key) ){
+          if( !isNull(Events) ){
+            if( Events.checkOn('change:'+key) ){
+              this.emit( 'change:' + key , data[key] , value , function(){
+                  data[key] = value;
+              });
+            }else{data[key] = value;}
+          }else{data[key] = value;}
       }
     }
   }
@@ -84,7 +92,7 @@
     return Object.assign({},{...data})
   }
   proto.isString = function( key ){
-    return this.has(key) ? toString.call( key ) === '[object String]' :  false ; 
+    return this.has(key) ? toString.call( key ) === '[object String]' :  false ;
   }
   proto.isBoolean = function(){
     return this.has(key) ? toString.call( key ) === '[object Boolean]' :  false ;
@@ -150,9 +158,9 @@
     if( isObject(preOptions) ){
        if( preOptions.hasOwnProperty('defaults') ){
          if( isObject(preOptions.defaults) ){
-            defaults = Object.assign({},preOptions.defaults) 
+            defaults = Object.assign({},preOptions.defaults)
          }
-       }     
+       }
     }
     return ppModel.bind(this,defaults);
   }

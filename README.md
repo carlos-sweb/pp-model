@@ -12,11 +12,11 @@ check the <a href="https://pp-model.netlify.app">Documentation</a>
 In the web project include pp-model.js with:
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/pp-events" ></script>
-<script src="https://cdn.jsdelivr.net/npm/pp-model.js@1.0.8/pp-model.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-events@1.0.8/pp-events.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-model.js@1.0.9/pp-model.min.js" ></script>
 ```
 
-Or 
+Or
 
 ## Install
 
