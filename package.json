@@ -23,6 +23,6 @@
   "homepage": "https://github.com/carlos-sweb/pp-model#readme",
   "devDependencies": {},
   "dependencies": {
-    "pp-events": "^1.0.8"
+    "pp-events": "^1.0.9"
   }
 }
