@@ -44,7 +44,7 @@ MyModel.on('change:salary',function( newValue , oldValue , next ){
 })
 
 // If you want to change the value
-MyModel.set('salary',4000);
+MyModel.set('salary',4000); // dont work
 MyModel.set('age',30);
 
 
@@ -57,57 +57,72 @@ console.log( MyModel.get('salary') );
 
 ## Methods
 
-### getAll: [Function]
+### `getAll`
 
 ```
 get all data
 ```
+---
 
-### get: [Function]
+### `get`
 ```
 get data from key
 ```
-### keys: [Function]
+---
+
+### `keys`
 
 Native Function [Check](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
 
-### values: [Function]
+---
+
+### `values`
 
 ```
 Native Function [Check]
 ```
+---
 
-### has: [Function]
+### `has`
 ```
 Native Function [Check]
 ```
-### isBoolean: [Function]
+---
+
+### `isBoolean`
 
 ```
 Checks if value is classified as a boolean primitive or object.
 ```
-### isString: [Function]
+---
+
+### `isString`
 ```
 Checks if value is classified as a String primitive or object.
 ```
 
-### isEmpty: [Function]
+---
+
+### `isEmpty`
 
 ```
 Checks if value is an empty object, collection, map, or set. Objects are considered empty if they have no own enumerable string keyed properties. Array-like values such as arguments objects, arrays, buffers, strings, or jQuery-like collections are considered empty if they have a length of 0. Similarly, maps and sets are considered empty if they have a size of 0.
 ```
-### set: [Function]
+---
+
+### `set`
 ```
 Set a hash of attributes (one or many) on the model. If any of the attributes change the model's state, a "change" event will be triggered on the model. Change events for specific attributes are also triggered, and you can bind to those as well, for example: change:title, and change:content. You may also pass individual keys and values.
 ```
-### omit: [Function]
+---
+
+### `omit`
 ```
 Return a copy of the object, filtered to omit the disallowed keys (or array of keys). Alternatively accepts a predicate indicating which keys to omit.
 ```
-### stringify: [Function]
+---
+
+### `stringify`
 ```
 Native Function [Check]
 ```
-## Events
-
-### on: [Function]
