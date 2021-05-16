@@ -3,9 +3,7 @@
   "version": "1.0.9",
   "description": "Simple Model Manipulation",
   "main": "pp-model.js",
-  "scripts": {
-    "compile": "terser --output pp-model.min.js --compress --mangle --comments false  -- pp-model.js && cp pp-model.min.js ./examples/pp-model.min.js"
-  },
+  "scripts": {"compile": "terser --output pp-model.min.js --compress --mangle --comments false  -- pp-model.js"},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/carlos-sweb/pp-model.git"
