@@ -59,15 +59,17 @@ console.log( MyModel.get('salary') );
 
 ### `getAll`
 
-```html
-get all data
+return all main data
+
+```javascript
+var dataRaw = MyModel.getAll();
 ```
 ---
 
 ### `get`
 
-```html
-get data from key
+```javascript
+var username = MyModel.get('username');
 ```
 ---
 
@@ -75,56 +77,73 @@ get data from key
 
 Native Function [Check](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
 
+```javascript
+var keys = MyModel.keys();
+```
+
 ---
 
 ### `values`
 
-```html
-Native Function [Check]
+```javascript
+var keys = MyModel.values();
 ```
 ---
 
 ### `has`
-```html
-Native Function [Check]
+
+```javascript
+var exists = MyModel.has('age');
 ```
 ---
 
 ### `isBoolean`
 
-```html
-Checks if value is classified as a boolean primitive or object.
+```javascript
+console.log(MyModel.isBoolean('age'));
+//output = false
 ```
 ---
 
 ### `isString`
-```html
-Checks if value is classified as a String primitive or object.
+
+```javascript
+console.log(MyModel.isString('username'));
+//output = true
 ```
 
 ---
 
 ### `isEmpty`
 
-```html
-Checks if value is an empty object, collection, map, or set. Objects are considered empty if they have no own enumerable string keyed properties. Array-like values such as arguments objects, arrays, buffers, strings, or jQuery-like collections are considered empty if they have a length of 0. Similarly, maps and sets are considered empty if they have a size of 0.
+```javascript
+console.log(MyModel.isEmpty('skill'));
+//output = false
 ```
 ---
 
 ### `set`
-```html
-Set a hash of attributes (one or many) on the model. If any of the attributes change the model's state, a "change" event will be triggered on the model. Change events for specific attributes are also triggered, and you can bind to those as well, for example: change:title, and change:content. You may also pass individual keys and values.
+```javascript
+MyModel.set('username','myNewUsername');
 ```
 ---
 
 ### `omit`
-```html
-Return a copy of the object, filtered to omit the disallowed keys (or array of keys). Alternatively accepts a predicate indicating which keys to omit.
+```javascript
+MyModel.omit('username','age');
 ```
+---
+
+### `pick`
+```javascript
+MyModel.pick('username','age');
+```
+
 ---
 
 ### `stringify`
 
-```html
-Native Function [Check]
+```javascript
+console.log(MyModel.stringify());
+//output = 
 ```
