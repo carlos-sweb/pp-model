@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
  * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
- * @version 1.0.9 (2020/05/14 12:41 PM)
+ * @version 1.1.0 (2020/05/16 21:27 PM)
  * Released under the MIT License
  */
 (function(global , factory ){
@@ -20,21 +20,75 @@
   }
 
 })( this,(function( root , example , ppEvents ) {
+  /*
+  *@var data
+  *@type Object
+  *@description - container of data main
+  */
   var data = {},
+  // link to Object.prototype.toString {}.toString
   toString = Object.prototype.toString,
-  isObject = function( value ){return toString.call(value) === '[object Object]'},
-  isNull = function( value){return toString.call(value) === '[object Null]'},
-  isString = function( value ){return toString.call(value) === '[object String]'},
-  isUndefined = function( value ){return toString.call( value ) === '[object Undefined]'},
+  isObject = function( value ){
+    /*
+    *@var isObject
+    *@type Function
+    *@params
+    *    value = value to compare
+    *@return Boolean
+    */
+    return toString.call(value) === '[object Object]'
+  },
+  /*
+  *@var isNull
+  *@type Function
+  *@params
+  *    value = value to compare
+  *@return Boolean
+  */
+  isNull = function( value){
+    return toString.call(value) === '[object Null]'
+  },
+  /*
+  *@var isString
+  *@type Function
+  *@params
+  *    value = value to compare
+  *@return Boolean
+  */
+  isString = function( value ){
+    return toString.call(value) === '[object String]'
+  },
+  /*
+  *@var isUndefined
+  *@type Function
+  *@params
+  *    value = value to compare
+  *@return Boolean
+  */
+  isUndefined = function( value ){
+    return toString.call( value ) === '[object Undefined]'
+  },
+  // DECLARE Events from ppEvents if be include
   Events = isUndefined( ppEvents ) ? null :  new ppEvents(),
+  // DECLARE MAIN FUNCTION OBJECT TO RETURN
   ppModel = function( defaults, __model ){
     if( isObject(defaults) ){ Object.assign(data,{...defaults}) }
     if( isObject(__model) ){ Object.assign(data,{...__model}) }
   },
+  //DECLARE link to prototype
   proto = ppModel.prototype;
+  // LINK FUNCTION ON
   proto.on = isNull(Events) ? function(){/*Include messague*/} : Events.on;
+  // LINK FUNCTION EMIT
   proto.emit = isNull(Events) ? function(){/*Include messague*/} :  Events.emit;
+  // LINK FUNCTION REMOVELISTENER
   proto.removeListener = isNull(Events) ? function(){/*Include messague*/} :  Events.removeListener;
+  /*
+  *@var get
+  *@type Function
+  *@description - get value from key of data main container
+  *@return String
+  */
   proto.get = function( key ){
     if( isString(key)){
       if( data.hasOwnProperty(key) ){
@@ -42,9 +96,14 @@
       }
     }
   }
+  /*
+  *@var set
+  *@type Function
+  *@description - set value from key of data main conatiner
+  *@return viod
+  */
   proto.set = function( key ,value ){
-    if( isString(key)){
-      if( data.hasOwnProperty(key) ){
+      if( this.has(key) ){
           if( !isNull(Events) ){
             if( Events.checkOn('change:'+key) ){
               this.emit( 'change:' + key , data[key] , value , function(){
@@ -53,15 +112,46 @@
             }else{data[key] = value;}
           }else{data[key] = value;}
       }
-    }
   }
   proto.stringify = function( replacer , space ){return JSON.stringify(data, replacer , space)}
+// link Object.keys
   proto.keys = function(){return Object.keys( {...data} )}
+  /*
+  *@var has
+  *@type Function
+  *@description - check if exists property from data main
+  *@return Boolean
+  */
   proto.has = function(key){return isString(key) ? data.hasOwnProperty(key) : false ;}
+  // link Object.values
   proto.values = function(){return Object.values( {...data} )}
-  proto.getAll = function(){return Object.assign({},{...data})}
-  proto.isString = function( key ){return this.has(key) ? toString.call( key ) === '[object String]' :  false ;}
-  proto.isBoolean = function(){return this.has(key) ? toString.call( key ) === '[object Boolean]' :  false ;}
+  /*
+  *@var getAll
+  *@type Function
+  *@description - return clone from data main
+  *@return Object
+  */
+  proto.getAll = function(){
+    return Object.assign({},{...data})
+  }
+  /*
+  *@var isString
+  *@type Function
+  *@description - check if property from data main is String
+  *@return Boolean
+  */
+  proto.isString = function( key ){
+    return this.has(key) ? isString( data[key] ) :  false ;
+  }
+  /*
+  *@var isBoolean
+  *@type Function
+  *@description - check if property from data main is Boolean
+  *@return Boolean
+  */
+  proto.isBoolean = function( key ){
+    return this.has(key) ? isBoolean(data[key]) :  false ;
+  }
   proto.isEmpty = function(){
     var value = data[key] || "";
       if( value == null ){
