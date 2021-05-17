@@ -152,7 +152,7 @@
   proto.isBoolean = function( key ){
     return this.has(key) ? isBoolean(data[key]) :  false ;
   }
-  proto.isEmpty = function(){
+  proto.isEmpty = function( key ){
     var value = data[key] || "";
       if( value == null ){
         return !0;
