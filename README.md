@@ -86,7 +86,7 @@ var keys = MyModel.keys();
 ### `values`
 
 ```javascript
-var keys = MyModel.values();
+var values = MyModel.values();
 ```
 ---
 
@@ -145,5 +145,5 @@ MyModel.pick('username','age');
 
 ```javascript
 console.log(MyModel.stringify());
-//output = 
+//output =
 ```
