@@ -59,7 +59,7 @@ console.log( MyModel.get('salary') );
 
 ### `getAll`
 
-return all main data
+get all main data
 
 ```javascript
 var dataRaw = MyModel.getAll();
@@ -68,6 +68,8 @@ var dataRaw = MyModel.getAll();
 
 ### `get`
 
+get value from key of main data
+
 ```javascript
 var username = MyModel.get('username');
 ```
@@ -75,7 +77,7 @@ var username = MyModel.get('username');
 
 ### `keys`
 
-Native Function [Check](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+get all keys from main data
 
 ```javascript
 var keys = MyModel.keys();
@@ -85,12 +87,16 @@ var keys = MyModel.keys();
 
 ### `values`
 
+get all values from main data
+
 ```javascript
 var values = MyModel.values();
 ```
 ---
 
 ### `has`
+
+check if exists property from main data
 
 ```javascript
 var exists = MyModel.has('age');
@@ -99,6 +105,8 @@ var exists = MyModel.has('age');
 
 ### `isBoolean`
 
+check if value from key is Boolean
+
 ```javascript
 console.log(MyModel.isBoolean('age'));
 //output = false
@@ -106,6 +114,8 @@ console.log(MyModel.isBoolean('age'));
 ---
 
 ### `isString`
+
+check if value from key is String
 
 ```javascript
 console.log(MyModel.isString('username'));
