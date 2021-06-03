@@ -126,6 +126,8 @@ console.log(MyModel.isString('username'));
 
 ### `isEmpty`
 
+Checks if value is an empty object, collection, map, or set.
+
 ```javascript
 console.log(MyModel.isEmpty('skill'));
 //output = false
@@ -145,6 +147,9 @@ MyModel.omit('username','age');
 ---
 
 ### `pick`
+
+Creates an object composed of the picked object properties.
+
 ```javascript
 MyModel.pick('username','age');
 ```
