@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
  * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
- * @version 1.1.0 (2020/05/16 21:27 PM)
+ * @version 1.2.0 (2020/08/04 04:04 AM)
  * Released under the MIT License
  */
 (function(global , factory ){
@@ -13,13 +13,14 @@
     });
   } else if (typeof exports !== 'undefined') {
     var ppEvents = {};
-    try { ppEvents = require('ppEvents'); } catch (e) {}
-    factory(root, exports, ppEvents );
+    try { ppEvents = require('pp-events'); } catch (e) {}
+    module.exports = factory(root, exports, ppEvents );
   } else {
+
     root.ppModel = factory(root, {}, root.ppEvents );
   }
 
-})( this,(function( root , example , ppEvents ) {
+})( this,(function( root , exports , ppEvents ) {
   /*
   *@var data
   *@type Object
@@ -205,17 +206,28 @@
           return result;
         };
   }
-  var prepareModel = function( initializeData ){return this.main( initializeData || {} );}
-  prepareModel.prototype.main = function( preOptions ){
-    var defaults = null;
-    if( isObject(preOptions) ){
-       if( preOptions.hasOwnProperty('defaults') ){
-         if( isObject(preOptions.defaults) ){
-            defaults = Object.assign({},preOptions.defaults)
+
+
+  var prepareModel = function( initializeData ){
+    this.main =  function( preOptions ){
+      var defaults = null;
+      if( isObject(preOptions) ){
+         if( preOptions.hasOwnProperty('defaults') ){
+           if( isObject(preOptions.defaults) ){
+              defaults = Object.assign({},preOptions.defaults)
+           }
          }
-       }
+      }
+      return ppModel.bind(this,defaults);
     }
-    return ppModel.bind(this,defaults);
+
+    return this.main( initializeData || {} );
   }
+
+
   return prepareModel;
+
+
+
+
 }));

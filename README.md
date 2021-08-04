@@ -38,7 +38,7 @@ var MyModel = new model({
 // If you want to the listen and filter
 MyModel.on('change:salary',function( newValue , oldValue , next ){
 	// Example
-  if( newValue >= 4500 ){
+  if( 4000 >= newValue ){    
     next();
   }
 })
