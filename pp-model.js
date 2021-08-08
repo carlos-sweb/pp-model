@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
  * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
- * @version 1.2.0 (2020/08/04 04:04 AM)
+ * @version 1.2.1 (2020/08/04 04:04 AM)
  * Released under the MIT License
  */
 (function(global , factory ){
@@ -103,14 +103,16 @@
   *@description - set value from key of data main conatiner
   *@return viod
   */
+  // Se podria depurar aun mas esta funcion
   proto.set = function( key ,value ){
       if( this.has(key) ){
           if( !isNull(Events) ){
             if( Events.checkOn('change:'+key) ){
-              this.emit( 'change:' + key , data[key] , value , function(){
+              this.emit( 'change:' + key , value , data[key] , function(){
                   data[key] = value;
-              });
-            }else{data[key] = value;}
+                  this.emit('changed:'+ key , value );
+              }.bind(this));
+            }else{data[key] = value;this.emit('changed:'+ key , value );}
           }else{data[key] = value;}
       }
   }
@@ -224,10 +226,6 @@
     return this.main( initializeData || {} );
   }
 
-
   return prepareModel;
-
-
-
 
 }));

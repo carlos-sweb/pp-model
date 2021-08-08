@@ -38,13 +38,20 @@ var MyModel = new model({
 // If you want to the listen and filter
 MyModel.on('change:salary',function( newValue , oldValue , next ){
 	// Example
-  if( 4000 >= newValue ){    
+  if( 4000 < newValue ){
     next();
   }
 })
 
+// If you want to the listen after change
+MyModel.on('changed:salary',function( value ){
+	   console.log('value changed caugth ' + value);
+})
+
+
 // If you want to change the value
 MyModel.set('salary',4000); // dont work
+MyModel.set('salary',4999); // work
 MyModel.set('age',30);
 
 
@@ -52,7 +59,7 @@ MyModel.set('age',30);
 console.log( MyModel.get('age') );
 // output = 30
 console.log( MyModel.get('salary') );
-// output = 5000
+// output = 4999
 ```
 
 ## Methods
