@@ -1,4 +1,3 @@
-var ppEvents = require('pp-events');
 var ppModel = require('./pp-model.js');
 
 // Declare model here
