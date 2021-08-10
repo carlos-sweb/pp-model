@@ -8,19 +8,21 @@
   var root = typeof self == 'object' && self.self === self && self ||
   typeof global == 'object' && global.global === global && global;
   if (typeof define === 'function' && define.amd) {
-    define(['ppEvents','exports'], function(ppEvents, exports) {
-      root.ppModel = factory(root, exports,ppEvents);
+    define(['ppEvents','ppIs','exports'], function( ppEvents, ppIs , exports ) {
+      root.ppModel = factory(root, exports, ppEvents , ppIs );
     });
   } else if (typeof exports !== 'undefined') {
     var ppEvents = {};
+    var ppIs = {};
     try { ppEvents = require('pp-events'); } catch (e) {}
-    module.exports = factory(root, exports, ppEvents );
+    try { ppIs = require('pp-is'); } catch (e) {}
+    module.exports = factory(root, exports, ppEvents , ppIs );
   } else {
 
-    root.ppModel = factory(root, {}, root.ppEvents );
+    root.ppModel = factory(root, {}, root.ppEvents , root.ppIs );
   }
 
-})( this,(function( root , exports , ppEvents ) {
+})( this,(function( root , exports , ppEvents , ppIs ) {
   /*
   *@var data
   *@type Object
