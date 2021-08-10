@@ -80,6 +80,7 @@ MyModel.isNumber('salary', function( value ){
 
 ### `isArray` `isBoolean` `isDate` `isElement` `isFunction` `isNull` `isNumber` `isObject` `isString` `isUndefined`
 
+These functions extend from [pp-is](https://github.com/carlos-sweb/pp-is)
 
 ### `getAll`
 
