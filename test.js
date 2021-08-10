@@ -43,3 +43,6 @@ console.log( MyModel.get('age') );
 // output = 30
 console.log( MyModel.get('salary') );
 // output = 4999
+
+
+console.log( MyModel.isNumber( 'age' ) );

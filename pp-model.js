@@ -29,63 +29,21 @@
   *@description - container of data main
   */
   var data = {},
-  // link to Object.prototype.toString {}.toString
-  toString = Object.prototype.toString,
-  isObject = function( value ){
-    /*
-    *@var isObject
-    *@type Function
-    *@params
-    *    value = value to compare
-    *@return Boolean
-    */
-    return toString.call(value) === '[object Object]'
-  },
-  /*
-  *@var isNull
-  *@type Function
-  *@params
-  *    value = value to compare
-  *@return Boolean
-  */
-  isNull = function( value){
-    return toString.call(value) === '[object Null]'
-  },
-  /*
-  *@var isString
-  *@type Function
-  *@params
-  *    value = value to compare
-  *@return Boolean
-  */
-  isString = function( value ){
-    return toString.call(value) === '[object String]'
-  },
-  /*
-  *@var isUndefined
-  *@type Function
-  *@params
-  *    value = value to compare
-  *@return Boolean
-  */
-  isUndefined = function( value ){
-    return toString.call( value ) === '[object Undefined]'
-  },
   // DECLARE Events from ppEvents if be include
-  Events = isUndefined( ppEvents ) ? null :  new ppEvents(),
+  Events = ppIs.isUndefined( ppEvents ) ? null :  new ppEvents(),
   // DECLARE MAIN FUNCTION OBJECT TO RETURN
   ppModel = function( defaults, __model ){
-    if( isObject(defaults) ){ Object.assign(data,{...defaults}) }
-    if( isObject(__model) ){ Object.assign(data,{...__model}) }
+    if( ppIs.isObject(defaults) ){ Object.assign(data,{...defaults}) }
+    if( ppIs.isObject(__model) ){ Object.assign(data,{...__model}) }
   },
   //DECLARE link to prototype
   proto = ppModel.prototype;
   // LINK FUNCTION ON
-  proto.on = isNull(Events) ? function(){/*Include messague*/} : Events.on;
+  proto.on = ppIs.isNull(Events) ? function(){/*Include messague*/} : Events.on;
   // LINK FUNCTION EMIT
-  proto.emit = isNull(Events) ? function(){/*Include messague*/} :  Events.emit;
+  proto.emit = ppIs.isNull(Events) ? function(){/*Include messague*/} :  Events.emit;
   // LINK FUNCTION REMOVELISTENER
-  proto.removeListener = isNull(Events) ? function(){/*Include messague*/} :  Events.removeListener;
+  proto.removeListener = ppIs.isNull(Events) ? function(){/*Include messague*/} :  Events.removeListener;
   /*
   *@var get
   *@type Function
@@ -93,7 +51,7 @@
   *@return String
   */
   proto.get = function( key ){
-    if( isString(key)){
+    if( ppIs.isString(key)){
       if( data.hasOwnProperty(key) ){
          return data[key];
       }
@@ -108,7 +66,7 @@
   // Se podria depurar aun mas esta funcion
   proto.set = function( key ,value ){
       if( this.has(key) ){
-          if( !isNull(Events) ){
+          if( !ppIs.isNull(Events) ){
             if( Events.checkOn('change:'+key) ){
               this.emit( 'change:' + key , value , data[key] , function(){
                   data[key] = value;
@@ -127,7 +85,7 @@
   *@description - check if exists property from data main
   *@return Boolean
   */
-  proto.has = function(key){return isString(key) ? data.hasOwnProperty(key) : false ;}
+  proto.has = function(key){return ppIs.isString(key) ? data.hasOwnProperty(key) : false ;}
   // link Object.values
   proto.values = function(){return Object.values( {...data} )}
   /*
@@ -139,47 +97,24 @@
   proto.getAll = function(){
     return Object.assign({},{...data})
   }
-  /*
-  *@var isString
-  *@type Function
-  *@description - check if property from data main is String
-  *@return Boolean
-  */
-  proto.isString = function( key ){
-    return this.has(key) ? isString( data[key] ) :  false ;
-  }
-  /*
-  *@var isBoolean
-  *@type Function
-  *@description - check if property from data main is Boolean
-  *@return Boolean
-  */
-  proto.isBoolean = function( key ){
-    return this.has(key) ? isBoolean(data[key]) :  false ;
-  }
-  proto.isEmpty = function( key ){
-    var value = data[key] || "";
-      if( value == null ){
-        return !0;
-      }
-      if( isString(value) ){
-        return value.length == 0 ? !0:!1;
-      }
-      if( isObject(value) || typeof value == 'array' ){
-        if( typeof value.length == 'undefined' ){
-          return Object.values(value).length == 0 ? !0:!1;
-        }else{
-          return value.length == 0 ? !0:!1;
+  // ===========================================================================
+  // ============== EXTEND ALL FUNCTION FROM ppis
+  var ppIsKey =  Object.keys(ppIs);
+  // ---------------------------------------------------------------------------
+  for( var i = 0; i < ppIsKey.length; i++  ){
+        var key = ppIsKey[i];
+        proto[ key ] = function( _key ,_done ){
+            return  data.hasOwnProperty(_key) ? ppIs[key]( data[_key] , _done  ) :  ppIs[key]( undefined , _done  ) ;
         }
-      }
   }
+  // ===========================================================================
   proto.pick = function(){
     var args = [].slice.call(arguments);
         var result = {};
         if( args.length > 0 ){
-         if(  isObject(data) ){
+         if(  ppIs.isObject(data) ){
            args.forEach(( arg )=>{
-             if( isString(arg) ){
+             if( ppIs.isString(arg) ){
                 if( data.hasOwnProperty(arg) ){
                     result[arg] = data[arg];
                 };
@@ -195,10 +130,10 @@
      var args = [].slice.call(arguments);
         var result = {};
         if( args.length > 0 ){
-         if( isObject(data) ){
+         if( ppIs.isObject(data) ){
            result = Object.assign({},{...data});
            args.forEach(( arg )=>{
-             if( isString(arg) ){
+             if( ppIs.isString(arg) ){
                 if( data.hasOwnProperty(arg) ){
                     delete result[arg];
                 };
@@ -215,9 +150,9 @@
   var prepareModel = function( initializeData ){
     this.main =  function( preOptions ){
       var defaults = null;
-      if( isObject(preOptions) ){
+      if( ppIs.isObject(preOptions) ){
          if( preOptions.hasOwnProperty('defaults') ){
-           if( isObject(preOptions.defaults) ){
+           if( ppIs.isObject(preOptions.defaults) ){
               defaults = Object.assign({},preOptions.defaults)
            }
          }
