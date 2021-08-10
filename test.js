@@ -1,5 +1,4 @@
 var ppModel = require('./pp-model.js');
-
 // Declare model here
 var model = new ppModel({
   defaults:{
@@ -17,6 +16,11 @@ var MyModel = new model({
 
 // If you want to the listen and filter
 MyModel.on('change:salary',function( newValue , oldValue , next ){
+
+  // You can also the this
+  // this.isUndefined
+  // this.isString
+
 	// Example
   if( 4000 < newValue ){
     next();
@@ -25,7 +29,11 @@ MyModel.on('change:salary',function( newValue , oldValue , next ){
 
 // If you want to the listen after change
 MyModel.on('changed:salary',function( value ){
+    // You can also the this
+    // this.isUndefined
+    // this.isString
 	   console.log('value changed caugth ' + value);
+
 })
 
 
@@ -36,12 +44,14 @@ MyModel.set('age',30);
 
 
 
-
 // If you want to get any value
 console.log( MyModel.get('age') );
 // output = 30
 console.log( MyModel.get('salary') );
 // output = 4999
+console.log( MyModel.isNumber('salary') );
+// output = true
 
-
-console.log( MyModel.isNumber( 'age' ) );
+MyModel.isNumber('salary', function( value ){
+      //Type your code here
+})

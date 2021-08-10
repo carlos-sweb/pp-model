@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
  * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
- * @version 1.2.1 (2020/08/04 04:04 AM)
+ * @version 1.2.2 (2020/08/10 08:56 AM)
  * Released under the MIT License
  */
 (function(global , factory ){
@@ -101,11 +101,14 @@
   // ============== EXTEND ALL FUNCTION FROM ppis
   var ppIsKey =  Object.keys(ppIs);
   // ---------------------------------------------------------------------------
+  //
   for( var i = 0; i < ppIsKey.length; i++  ){
-        var key = ppIsKey[i];
-        proto[ key ] = function( _key ,_done ){
-            return  data.hasOwnProperty(_key) ? ppIs[key]( data[_key] , _done  ) :  ppIs[key]( undefined , _done  ) ;
-        }
+        var key   = ppIsKey[i];
+        proto[ key ] = function( func , _key ,_done ){
+
+            return data.hasOwnProperty(_key) ? func( data[ _key ] , _done ) : func( undefined , _done );
+
+        }.bind( this , ppIs[ key ] )
   }
   // ===========================================================================
   proto.pick = function(){
