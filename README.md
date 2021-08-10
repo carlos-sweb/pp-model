@@ -78,7 +78,7 @@ MyModel.isNumber('salary', function( value ){
 
 ## Methods
 
-#### isArray isBoolean isDate isElement isFunction isNull isNumber isObject isString isUndefined
+### `isArray` `isBoolean` `isDate` `isElement` `isFunction` `isNull` `isNumber` `isObject` `isString` `isUndefined`
 
 
 ### `getAll`
