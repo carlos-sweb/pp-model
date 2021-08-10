@@ -82,6 +82,23 @@ MyModel.isNumber('salary', function( value ){
 
 These functions extend from [pp-is](https://github.com/carlos-sweb/pp-is)
 
+```javascript
+ // Enter the key to be consulted
+ if( MyModel.isString('username') ){
+
+ };
+```
+or
+
+```javascript
+ // Enter the key to be consulted
+ MyModel.isString('username', function( value ){
+       
+ })
+```
+
+---
+
 ### `getAll`
 
 get all main data
