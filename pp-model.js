@@ -1,7 +1,7 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
  * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
- * @version 1.2.3 (2020/08/10 23:06 PM)
+ * @version 1.2.4 (2020/08/10 23:17 PM)
  * Released under the MIT License
  */
 (function(global , factory ){
@@ -68,10 +68,21 @@
       if( this.has(key) ){
           if( !ppIs.isNull(Events) ){
             if( Events.checkOn('change:'+key) || Events.checkOn('changed:'+key)  ){
-              this.emit( 'change:' + key , value , data[key] , function(){
+              // new code for check and review
+              if( Events.checkOn('change:'+key)  ){
+                this.emit( 'change:' + key , value , data[key] , function(){
+                    data[key] = value;
+                    if( Events.checkOn('changed:'+key) ){
+                      this.emit('changed:'+ key , value );
+                    }
+                }.bind(this));
+              }else{
                   data[key] = value;
-                  this.emit('changed:'+ key , value );
-              }.bind(this));
+                  if( Events.checkOn('changed:'+key) ){
+                    this.emit('changed:'+ key , value );
+                  }
+              }
+              // new code for check and review
             }else{data[key] = value;this.emit('changed:'+ key , value );}
           }else{data[key] = value;}
       }
