@@ -1,6 +1,6 @@
 {
   "name": "pp-model.js",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Simple Model Manipulation",
   "main": "pp-model.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/carlos-sweb/pp-model#readme",
   "dependencies": {
     "pp-events": "^1.0.9",
-    "pp-is": "^1.0.1"
+    "pp-is": "^1.0.1",
+    "pp-validate": "^1.0.0"
   }
 }

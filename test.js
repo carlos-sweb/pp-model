@@ -55,3 +55,12 @@ console.log( MyModel.isNumber('salary') );
 MyModel.isNumber('salary', function( value ){
       //Type your code here
 })
+
+// check https://github.com/carlos-sweb/pp-validate
+var result =  MyModel.validate({
+   name:"minlength:6",
+   salary:"number",
+   age:"number|range:18,100"
+});
+
+console.log( result );

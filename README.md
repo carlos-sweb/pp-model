@@ -5,6 +5,7 @@ In the web project include pp-model.js with:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/pp-is@latest/pp-is.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/pp-events@latest/pp-events.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/pp-validate@latest/pp-validate.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/pp-model.js@latest/pp-model.min.js" ></script>
 ```
 
@@ -74,9 +75,42 @@ console.log( MyModel.isNumber('salary') );
 MyModel.isNumber('salary', function( value ){
       //Type your code here
 })
+
+// check https://github.com/carlos-sweb/pp-validate
+var result =  MyModel.validate({
+   name:"minlength:6",
+   salary:"number",
+   age:"number|range:18,100"
+});
+
+console.log( result );
 ```
 
 ## Methods
+
+
+### validate
+
+validate data rules
+
+[Check Documentation](https://github.com/carlos-sweb/pp-validate)
+
+```javascript
+var rules ={
+   name:"minlength:6",
+   salary:"number",
+   age:"number|range:18,100"
+}
+var result = MyModel.validate( rules );
+
+if( result.valid ){
+  // Enter your code here
+}else{
+  console.log( result.error);
+}
+
+```
+
 
 ### `isArray` `isBoolean` `isDate` `isElement` `isFunction` `isNull` `isNumber` `isObject` `isString` `isUndefined`
 
@@ -93,7 +127,7 @@ or
 ```javascript
  // Enter the key to be consulted
  MyModel.isString('username', function( value ){
-       
+
  })
 ```
 

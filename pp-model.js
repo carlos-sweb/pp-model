@@ -1,28 +1,29 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
  * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
- * @version 1.2.4 (2020/08/10 23:17 PM)
+ * @version 1.2.5 (2020/10/10 16:28 PM)
  * Released under the MIT License
  */
 (function(global , factory ){
   var root = typeof self == 'object' && self.self === self && self ||
   typeof global == 'object' && global.global === global && global;
   if (typeof define === 'function' && define.amd) {
-    define(['ppEvents','ppIs','exports'], function( ppEvents, ppIs , exports ) {
-      root.ppModel = factory(root, exports, ppEvents , ppIs );
+    define(['ppEvents','ppIs','ppValidate','exports'], function( ppEvents, ppIs , ppValidate , exports ) {
+      root.ppModel = factory(root, exports, ppEvents , ppIs , ppValidate);
     });
   } else if (typeof exports !== 'undefined') {
-    var ppEvents = {};
-    var ppIs = {};
+    var ppEvents = {},
+    ppIs = {},
+    ppValidate = {};
     try { ppEvents = require('pp-events'); } catch (e) {}
     try { ppIs = require('pp-is'); } catch (e) {}
-    module.exports = factory(root, exports, ppEvents , ppIs );
+    try { ppValidate = require('pp-validate'); } catch (e) {}
+    module.exports = factory(root, exports, ppEvents , ppIs , ppValidate );
   } else {
-
-    root.ppModel = factory(root, {}, root.ppEvents , root.ppIs );
+    root.ppModel = factory(root, {}, root.ppEvents , root.ppIs , root.ppValidate );
   }
 
-})( this,(function( root , exports , ppEvents , ppIs ) {
+})( this,(function( root , exports , ppEvents , ppIs , ppValidate ) {
   /*
   *@var data
   *@type Object
@@ -158,6 +159,16 @@
         }else{
           return result;
         };
+  }
+
+  proto.validate = function( rules  ){
+
+       if( ppIs.isFunction( ppValidate ) ){
+          return ppValidate( this.getAll() , rules  );
+       }else{
+         // When ppValidate no include
+         return null;
+       }
   }
 
 
