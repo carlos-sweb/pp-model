@@ -1,15 +1,15 @@
 /*!!
  * Power Panel Model <https://github.com/carlos-sweb/pp-model>
  * @author Carlos Illesca <c4rl0sill3sc4@gmail.com>
- * @version 1.2.5 (2020/10/10 16:28 PM)
+ * @version 1.2.6 (2023/10/14 01:17 AM)
  * Released under the MIT License
  */
 (function(global , factory ){
   var root = typeof self == 'object' && self.self === self && self ||
   typeof global == 'object' && global.global === global && global;
   if (typeof define === 'function' && define.amd) {
-    define(['ppEvents','ppIs','ppValidate','exports'], function( ppEvents, ppIs , ppValidate , exports ) {
-      root.ppModel = factory(root, exports, ppEvents , ppIs , ppValidate);
+    define(['ppEvents','ppIs','ppValidate'], function( ppEvents, ppIs , ppValidate ) {
+      root.ppModel = factory( ppEvents , ppIs , ppValidate);
     });
   } else if (typeof exports !== 'undefined') {
     var ppEvents = {},
@@ -18,68 +18,80 @@
     try { ppEvents = require('pp-events'); } catch (e) {}
     try { ppIs = require('pp-is'); } catch (e) {}
     try { ppValidate = require('pp-validate'); } catch (e) {}
-    module.exports = factory(root, exports, ppEvents , ppIs , ppValidate );
+    module.exports = factory(ppEvents , ppIs , ppValidate );
   } else {
-    root.ppModel = factory(root, {}, root.ppEvents , root.ppIs , root.ppValidate );
+    root.ppModel = factory( root.ppEvents , root.ppIs , root.ppValidate );
   }
 
-})( this,(function( root , exports , ppEvents , ppIs , ppValidate ) {
-  /*
-  *@var data
-  *@type Object
-  *@description - container of data main
-  */
-  var data = {},
-  // DECLARE Events from ppEvents if be include
-  Events = ppIs.isUndefined( ppEvents ) ? null :  new ppEvents(),
-  // DECLARE MAIN FUNCTION OBJECT TO RETURN
-  ppModel = function( defaults, __model ){
+})( this,(function(  ppEvents , ppIs , ppValidate ) {
+  
+
+  
+  var ppModel = function( defaults, __model ){
+
+    // DECLARE Events from ppEvents if be include
+    this.Events = ppIs.isUndefined( ppEvents ) ? null :  new ppEvents()
+    this.on = ppIs.isNull(this.Events) ? function(){/*Include messague*/} : this.Events.on;
+    this.emit = ppIs.isNull(this.Events) ? function(){/*Include messague*/} :  this.Events.emit;
+    // Data main container
+    var data = {};
+
     if( ppIs.isObject(defaults) ){ Object.assign(data,{...defaults}) }
     if( ppIs.isObject(__model) ){ Object.assign(data,{...__model}) }
-  },
-  //DECLARE link to prototype
-  proto = ppModel.prototype;
-  // LINK FUNCTION ON
-  proto.on = ppIs.isNull(Events) ? function(){/*Include messague*/} : Events.on;
-  // LINK FUNCTION EMIT
-  proto.emit = ppIs.isNull(Events) ? function(){/*Include messague*/} :  Events.emit;
-  // LINK FUNCTION REMOVELISTENER
-  proto.removeListener = ppIs.isNull(Events) ? function(){/*Include messague*/} :  Events.removeListener;
-  /*
-  *@var get
-  *@type Function
-  *@description - get value from key of data main container
-  *@return String
-  */
-  proto.get = function( key ){
-    if( ppIs.isString(key)){
-      if( data.hasOwnProperty(key) ){
-         return data[key];
+
+    // ===========================================================================
+    // ============== EXTEND ALL FUNCTION FROM ppis
+    var ppIsKey =  Object.keys(ppIs);
+    // ---------------------------------------------------------------------------    
+    for( var i = 0; i < ppIsKey.length; i++  ){
+
+          var key   = ppIsKey[i];
+      
+          this[ key ] = function( func , _key ,_done ){                          
+
+              return data.hasOwnProperty(_key) ? func( data[ _key ] , _done ) : func( undefined , _done );
+
+          }.bind( this , ppIs[ key ] )
+      
+    }
+
+
+    /*
+    *@var get
+    *@type Function
+    *@description - get value from key of data main container
+    *@return String
+    */
+    this.get = function( key ){
+      if( ppIs.isString(key)){
+        if( data.hasOwnProperty(key) ){
+          return data[key];
+        }
       }
     }
-  }
-  /*
+
+     /*
   *@var set
   *@type Function
   *@description - set value from key of data main conatiner
   *@return viod
   */
   // Se podria depurar aun mas esta funcion
-  proto.set = function( key ,value ){
+  this.set = function( key ,value ){
       if( this.has(key) ){
-          if( !ppIs.isNull(Events) ){
-            if( Events.checkOn('change:'+key) || Events.checkOn('changed:'+key)  ){
+          if( !ppIs.isNull(this.Events) ){
+            if( this.Events.checkOn('change:'+key) || this.Events.checkOn('changed:'+key)  ){
               // new code for check and review
-              if( Events.checkOn('change:'+key)  ){
+              if( this.Events.checkOn('change:'+key)  ){
                 this.emit( 'change:' + key , value , data[key] , function(){
                     data[key] = value;
-                    if( Events.checkOn('changed:'+key) ){
+                    if( this.Events.checkOn('changed:'+key) ){
                       this.emit('changed:'+ key , value );
                     }
                 }.bind(this));
               }else{
                   data[key] = value;
-                  if( Events.checkOn('changed:'+key) ){
+                  if( this.Events.checkOn('changed:'+key) ){
                     this.emit('changed:'+ key , value );
                   }
               }
@@ -88,42 +100,34 @@
           }else{data[key] = value;}
       }
   }
-  proto.stringify = function( replacer , space ){return JSON.stringify(data, replacer , space)}
+
+
+
+  this.stringify = function( replacer , space ){return JSON.stringify(data, replacer , space)}
 // link Object.keys
-  proto.keys = function(){return Object.keys( {...data} )}
+  this.keys = function(){return Object.keys( {...data} )}
   /*
   *@var has
   *@type Function
   *@description - check if exists property from data main
   *@return Boolean
   */
-  proto.has = function(key){return ppIs.isString(key) ? data.hasOwnProperty(key) : false ;}
+  this.has = function(key){return ppIs.isString(key) ? data.hasOwnProperty(key) : false ;}
   // link Object.values
-  proto.values = function(){return Object.values( {...data} )}
+  this.values = function(){return Object.values( {...data} )}
   /*
   *@var getAll
   *@type Function
   *@description - return clone from data main
   *@return Object
   */
-  proto.getAll = function(){
+  this.getAll = function(){
     return Object.assign({},{...data})
   }
-  // ===========================================================================
-  // ============== EXTEND ALL FUNCTION FROM ppis
-  var ppIsKey =  Object.keys(ppIs);
-  // ---------------------------------------------------------------------------
-  //
-  for( var i = 0; i < ppIsKey.length; i++  ){
-        var key   = ppIsKey[i];
-        proto[ key ] = function( func , _key ,_done ){
 
-            return data.hasOwnProperty(_key) ? func( data[ _key ] , _done ) : func( undefined , _done );
-
-        }.bind( this , ppIs[ key ] )
-  }
+  
   // ===========================================================================
-  proto.pick = function(){
+  this.pick = function(){
     var args = [].slice.call(arguments);
         var result = {};
         if( args.length > 0 ){
@@ -141,7 +145,8 @@
           return result;
         };
   }
-  proto.omit = function(){
+  
+  this.omit = function(){
      var args = [].slice.call(arguments);
         var result = {};
         if( args.length > 0 ){
@@ -161,7 +166,7 @@
         };
   }
 
-  proto.validate = function( rules  ){
+  this.validate = function( rules  ){
 
        if( ppIs.isFunction( ppValidate ) ){
           return ppValidate( this.getAll() , rules  );
@@ -170,6 +175,15 @@
          return null;
        }
   }
+
+
+
+  }
+
+  
+
+ 
+  
 
 
   var prepareModel = function( initializeData ){

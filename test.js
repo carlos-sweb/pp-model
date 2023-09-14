@@ -1,4 +1,4 @@
-var ppModel = require('./pp-model.js');
+var ppModel = require('./pp-model.min.js');
 // Declare model here
 var model = new ppModel({
   defaults:{
@@ -32,7 +32,7 @@ MyModel.on('changed:salary',function( value ){
     // You can also the this
     // this.isUndefined
     // this.isString
-	   console.log('value changed caugth ' + value);
+	   console.log('value changed caugth MyModel ' + value);
 
 })
 
@@ -41,6 +41,8 @@ MyModel.on('changed:salary',function( value ){
 MyModel.set('salary',4000); // dont work
 MyModel.set('salary',4999);
 MyModel.set('age',30);
+
+
 
 
 
@@ -54,6 +56,7 @@ console.log( MyModel.isNumber('salary') );
 
 MyModel.isNumber('salary', function( value ){
       //Type your code here
+
 })
 
 // check https://github.com/carlos-sweb/pp-validate
@@ -64,3 +67,6 @@ var result =  MyModel.validate({
 });
 
 console.log( result );
+
+
+
