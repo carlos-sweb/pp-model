@@ -59,6 +59,15 @@ MyModel.on('changed:salary',function( value ){
 
 })
 
+// If you want to the listen after any change
+MyModel.on('changed',function(key , value){
+   // You can also the this
+    // this.isUndefined
+    // this.isString
+    console.log(`value changed caugth MyModel  ${value} from ${key}`);
+
+})
+
 // If you want to change the value
 MyModel.set('salary',4000); // dont work
 MyModel.set('salary',4999);

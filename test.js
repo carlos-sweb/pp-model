@@ -3,6 +3,9 @@ var ppModel = require('./pp-model.min.js');
 var model = new ppModel({
   defaults:{
    salary:5000
+  },
+  rules:{
+    age:"numeric|range:30,40"
   }
 });
 
@@ -14,6 +17,7 @@ var MyModel = new model({
    adress:"Adress, city , contry"
 });
 
+
 // If you want to the listen and filter
 MyModel.on('change:salary',function( newValue , oldValue , next ){
 
@@ -23,8 +27,10 @@ MyModel.on('change:salary',function( newValue , oldValue , next ){
 
 	// Example
   if( 4000 < newValue ){
+    //console.log(`Lisen next()`);
     next();
   }
+
 })
 
 // If you want to the listen after change
@@ -32,17 +38,24 @@ MyModel.on('changed:salary',function( value ){
     // You can also the this
     // this.isUndefined
     // this.isString
-	   console.log('value changed caugth MyModel ' + value);
+	   console.log(`value changed caugth MyModel  ${value}`);
 
 })
 
+
+// If you want to the listen after any change
+MyModel.on('changed',function(key , value){
+   // You can also the this
+    // this.isUndefined
+    // this.isString
+    console.log(`value changed caugth MyModel  ${value} from ${key}`);
+
+})
 
 // If you want to change the value
 MyModel.set('salary',4000); // dont work
 MyModel.set('salary',4999);
 MyModel.set('age',30);
-
-
 
 
 
@@ -54,19 +67,17 @@ console.log( MyModel.get('salary') );
 console.log( MyModel.isNumber('salary') );
 // output = true
 
+
 MyModel.isNumber('salary', function( value ){
       //Type your code here
-
+      
 })
 
 // check https://github.com/carlos-sweb/pp-validate
 var result =  MyModel.validate({
    name:"minlength:6",
    salary:"number",
-   age:"number|range:18,100"
+   age:"number|range:18,45"
 });
 
 console.log( result );
-
-
-
